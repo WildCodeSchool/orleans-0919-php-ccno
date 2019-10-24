@@ -1,4 +1,8 @@
 /* HEADER */
+* {
+    --flash_pink: #ff5499;
+    --light_pink: #ffd6f1;
+}
 .logo {
     width: 15vh ;
 }
@@ -10,10 +14,10 @@
     color: black;
 }
 .navbar-light .navbar-nav .nav-link:hover {
-    color: #ff5499;
+    color: var(--flash_pink);
 }
 .dropdown-item:hover {
-    color: #ff5499;
+    color: var(--flash_pink);
     font-size: 1.1em;
 }
 .social_media {
