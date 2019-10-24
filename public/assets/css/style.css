@@ -6,23 +6,23 @@
 footer {
     background-color: #1e1918;
 }
-.color-title {
+.color-title-footer {
     /* Couleur de titre */
     color: white;
     font-size : 1.2em;
 }
 
-.link {
+.link-footer {
     /* Couleur de link */
     color: white ;
 }
 
-.link:hover {
+.link-footer:hover {
     /* Couleur hover */
     color: white ;
 }
 
-.logo {
+.logo-footer {
     /* Taille logo */
     width : 30%;
 }
