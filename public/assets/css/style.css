@@ -1,0 +1,29 @@
+/* Header - Navbar */
+.logo {
+    width: 15vh ;
+}
+.navbar {
+    font-size: 1.3em;
+    letter-spacing: 0.1em;
+}
+.navbar-light .navbar-nav .nav-link {
+    color: black;
+}
+.navbar-light .navbar-nav .nav-link:hover {
+    color: #ff5499;
+}
+.dropdown-item:hover {
+    color: #ff5499;
+    font-size: 1.1em;
+}
+.social_media {
+    font-size: 3vh;
+}
+.navbar-nav {
+    width: 100%;
+    justify-content: space-around;
+}
+
+
+
+
