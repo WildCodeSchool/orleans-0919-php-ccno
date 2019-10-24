@@ -1,0 +1,47 @@
+footer {
+    background-color: #1e1918;
+}
+.color-title {
+    /* Couleur de titre */
+    color: white;
+    font-size : 1.2em;
+}
+
+.link {
+    /* Couleur de link */
+    color: white ;
+}
+
+.link:hover {
+    /* Couleur hover */
+    color: white ;
+}
+
+.logo {
+    /* Taille logo */
+    width : 30%;
+}
+
+.middle-footer
+{
+    text-align: center;
+}
+
+.right-footer
+{
+    text-align: right;
+}
+
+@media screen and (max-width: 500px)
+{
+    .left-footer, .right-footer
+    {
+        text-align: center;
+        margin-left: 0 ;
+        margin-right: 0;
+        padding-left: 48px;
+        padding-right: 48px;
+    }
+
+
+}
