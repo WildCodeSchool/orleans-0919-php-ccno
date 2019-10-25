@@ -1,7 +1,9 @@
 /* HEADER */
 * {
-    --flash_pink: #ff5499;
-    --light_pink: #ffd6f1;
+    --primary-color: #ff5499;
+    --light-primary-color: #ffd6f1;
+    --dark: #1e1918;
+    --light: #fffbfd;
 }
 .logo {
     width: 15vh ;
@@ -14,10 +16,10 @@
     color: black;
 }
 .navbar-light .navbar-nav .nav-link:hover {
-    color: var(--flash_pink);
+    color: var(--primary-color);
 }
 .dropdown-item:hover {
-    color: var(--flash_pink);
+    color: var(--primary-color);
     font-size: 1.1em;
 }
 .social_media {
@@ -27,7 +29,25 @@
     width: 100%;
     justify-content: space-around;
 }
-
 /* CONTENT */
 
 /* FOOTER */
+footer {
+    background-color: var(--dark);
+}
+
+.color-title-footer {
+    /* Couleur de titre */
+    color: var(--light);
+    font-size : 1.2em;
+}
+
+.link-footer, .link-footer:hover {
+    /* Couleur de link */
+    color: var(--light);
+}
+
+.logo-footer {
+    /* Taille logo */
+    width : 30%;
+}
