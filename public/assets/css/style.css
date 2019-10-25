@@ -1,7 +1,7 @@
 /* HEADER */
 * {
-    --pink: #ff5499;
-    --light_pink: #ffd6f1;
+    --primary-color: #ff5499;
+    --light-primary-color: #ffd6f1;
     --dark: #1e1918;
     --light: #fffbfd;
 }
@@ -16,10 +16,10 @@
     color: black;
 }
 .navbar-light .navbar-nav .nav-link:hover {
-    color: var(--pink);
+    color: var(--primary-color);
 }
 .dropdown-item:hover {
-    color: var(--pink);
+    color: var(--primary-color);
     font-size: 1.1em;
 }
 .social_media {
