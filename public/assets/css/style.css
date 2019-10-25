@@ -1,52 +1,30 @@
 /* HEADER */
-
+* {
+    --flash_pink: #ff5499;
+    --light_pink: #ffd6f1;
+    --eerie_black: #1e1918;
+    --snow: #fffbfd;
+}
 /* CONTENT */
 
 /* FOOTER */
+
 footer {
-    background-color: #1e1918;
+    background-color: var(--eerie_black);
 }
+
 .color-title-footer {
     /* Couleur de titre */
-    color: white;
+    color: var(--snow);
     font-size : 1.2em;
 }
 
-.link-footer {
+.link-footer, .link-footer:hover {
     /* Couleur de link */
-    color: white ;
-}
-
-.link-footer:hover {
-    /* Couleur hover */
-    color: white ;
+    color: var(--snow);
 }
 
 .logo-footer {
     /* Taille logo */
     width : 30%;
-}
-
-.middle-footer
-{
-    text-align: center;
-}
-
-.right-footer
-{
-    text-align: right;
-}
-
-@media screen and (max-width: 500px)
-{
-    .left-footer, .right-footer
-    {
-        text-align: center;
-        margin-left: 0 ;
-        margin-right: 0;
-        padding-left: 48px;
-        padding-right: 48px;
-    }
-
-
 }
