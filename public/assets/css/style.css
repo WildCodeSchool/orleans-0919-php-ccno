@@ -5,10 +5,33 @@
     --eerie_black: #1e1918;
     --snow: #fffbfd;
 }
+.logo {
+    width: 15vh ;
+}
+.navbar {
+    font-size: 1.3em;
+    letter-spacing: 0.1em;
+}
+.navbar-light .navbar-nav .nav-link {
+    color: black;
+}
+.navbar-light .navbar-nav .nav-link:hover {
+    color: var(--flash_pink);
+}
+.dropdown-item:hover {
+    color: var(--flash_pink);
+    font-size: 1.1em;
+}
+.social_media {
+    font-size: 3vh;
+}
+.navbar-nav {
+    width: 100%;
+    justify-content: space-around;
+}
 /* CONTENT */
 
 /* FOOTER */
-
 footer {
     background-color: var(--eerie_black);
 }
