@@ -5,3 +5,8 @@
 .presentation {
     border: solid 2px var(--primary-color);
 }
+
+.presentation_img {
+    width: 450px;
+    height: 450px;
+}
