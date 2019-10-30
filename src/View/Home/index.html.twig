@@ -1,6 +1,11 @@
 {% extends 'layout.html.twig' %}
 
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/shortpresentation_style.css">
+{% endblock %}
+
 {% block content %}
     {% include 'Home/brochure.html.twig' %}
+    {% include 'Home/shortpresentation.html.twig' %}
 {% endblock %}
 
