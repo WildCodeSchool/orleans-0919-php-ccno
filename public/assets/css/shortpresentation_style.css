@@ -1,0 +1,14 @@
+.know_more:hover {
+    color: var(--primary-color)
+}
+
+.presentation {
+    border: solid 2px var(--primary-color);
+    border-radius: 4px;
+}
+
+.presentation_img {
+    width: 400px;
+    height: 400px;
+    border-radius: 4px;
+}
