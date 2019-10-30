@@ -29,6 +29,11 @@
     width: 100%;
     justify-content: space-around;
 }
+.social_logo {
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+}
 /* CONTENT */
 
 /* BROCHURE */
