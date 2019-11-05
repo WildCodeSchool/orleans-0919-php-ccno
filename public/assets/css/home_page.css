@@ -5,10 +5,22 @@
 .presentation {
     border: solid 2px var(--primary-color);
     border-radius: 4px;
+    font-size: 1.2em;
 }
 
 .presentation_img {
     width: 400px;
     height: 400px;
     border-radius: 4px;
+}
+
+.event {
+    width: 19.5rem;
+    height: 19.5rem;
+    border: solid black;
+}
+
+.type {
+    height: 40px;
+    width: 60%;
 }
