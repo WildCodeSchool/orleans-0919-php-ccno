@@ -9,18 +9,36 @@
 }
 
 .presentation_img {
-    width: 400px;
-    height: 400px;
+    width: 25rem;
+    height: 25rem;
     border-radius: 4px;
 }
 
 .event {
-    width: 19.5rem;
-    height: 19.5rem;
-    border: solid black;
+    width: 25rem;
+    height: 25rem;
+    border-radius: 5px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 4px 14px -5px rgba(0,0,0,0.46);
 }
 
 .type {
-    height: 40px;
-    width: 60%;
+    width: 75%;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.datetime {
+    color: var(--primary-color) ;
+}
+
+.event-title, .type {
+    background-color: #FFFBFD;
+}
+
+.event-title {
+    border-radius: 0 0 4px 4px;
 }
