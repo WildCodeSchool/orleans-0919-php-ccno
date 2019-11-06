@@ -1,0 +1,15 @@
+<section class=“m-lg-5 m-4” id=“events”>
+    <h2>ÉVÈNEMENTS</h2>
+    <div class="events_container d-flex flex-wrap justify-content-around">
+        {% for event in events %}
+        <div class="event m-3 position-relative">
+            <a href="#events"><img class="w-100 h-100" src="{{ event.image }}"></a>
+            <a href="#events"><h3 class="type position-absolute fixed-top mt-4 bg-dark text-white p-1">TYPE</h3></a>
+            <div class="event-title position-absolute fixed-bottom pl-2 pt-2 bg-dark">
+                <h5 class="text-white">02/03/2000</h5>
+                <h3 class="text-white">{{ event.title }}</h3>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>

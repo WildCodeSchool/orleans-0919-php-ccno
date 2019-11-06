@@ -2,6 +2,7 @@
 * {
     --primary-color: #ff5499;
     --light-primary-color: #ffd6f1;
+    --footer-text-secondary-color : #c3c7cb;
     --dark: #1e1918;
     --light: #fffbfd;
 }
@@ -35,6 +36,14 @@
     list-style: none;
 }
 /* CONTENT */
+.event {
+    width: 19.5rem;
+    height: 19.5rem;
+    border: solid black;
+}.type {
+     height: 40px;
+     width: 60%;
+ }
 /*CARROUSEL*/
 .img-fluid {
     max-width: 100%;
@@ -74,4 +83,8 @@ footer {
 .logo-footer {
     /* Taille logo */
     width : 30%;
+}
+
+.footer-text {
+    color: var(--footer-text-secondary-color);
 }
