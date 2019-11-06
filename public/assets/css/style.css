@@ -35,10 +35,15 @@
     list-style: none;
 }
 /* CONTENT */
-
+/*CARROUSEL*/
+.img-fluid {
+    max-width: 100%;
+    height: 500px;
+}
 /* BROCHURE */
 .card {
     width: 18rem;
+    height: 14rem;
     background-color: var(--primary-color);
 }
 
