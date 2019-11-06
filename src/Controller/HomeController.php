@@ -24,7 +24,6 @@ class HomeController extends AbstractController
     {
         $eventManager = new EventManager('event');
         $events = $eventManager->showEventHomePage();
-
         return $this->twig->render('Home/index.html.twig', [
             'events' => $events,
         ]);
