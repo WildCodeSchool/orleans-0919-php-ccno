@@ -1,6 +1,7 @@
 body {
     width: 100%;
     height: auto;
+    color: var(--dark);
 }
 .banniere img {
     width: 100%;
@@ -22,7 +23,7 @@ body {
 }
 
 .presentation_CCNO h2 {
-    margin: 5% 0 5% 3%;
+    margin: 5% 0 3% 3%;
 }
 
 .presentation_CCNO p {
@@ -37,6 +38,8 @@ hr {
 
 .card {
     margin-top: 6%;
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 14px -5px rgba(0,0,0,0.46);
 }
 
 .card-body{
@@ -45,6 +48,7 @@ hr {
 
 .list-group-item{
     padding-right: 0;
+    border-color: var(--dark);
 }
 
 a {
@@ -60,7 +64,7 @@ a:hover {
 }
 
 .accueil_studio h2 {
-    margin: 70px 0 5% 3%;
+    margin: 70px 0 3% 3%;
 }
 
 .accueil_studio p {
