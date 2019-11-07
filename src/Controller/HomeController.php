@@ -9,7 +9,6 @@
 namespace App\Controller;
 
 use App\Model\EventCarousselManager;
-use App\Model\EventManager;
 
 class HomeController extends AbstractController
 {
