@@ -46,17 +46,16 @@
  }
 /*CARROUSEL*/
 .img-fluid {
-    max-width: 100%;
     height: 500px;
 }
 /* BROCHURE */
-.card {
+.card-brochure {
     width: 18rem;
     height: 14rem;
     background-color: var(--primary-color);
 }
 
-.card-body {
+.card-color {
     color: var(--light);
 }
 

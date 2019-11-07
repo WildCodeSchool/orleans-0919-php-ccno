@@ -23,10 +23,8 @@ class HomeController extends AbstractController
      */
     public function index()
     {
-        $eventManager = new EventManager('event');
-        $events = $eventManager->selectAll();
         $carousselManager= new EventCarousselManager('event');
         $caroussels = $carousselManager->selectPictureCaroussel();
-        return $this->twig->render('Home/index.html.twig', ['events' => $events, 'caroussels'=> $caroussels]);
+        return $this->twig->render('Home/index.html.twig', ['caroussels'=> $caroussels]);
     }
 }
