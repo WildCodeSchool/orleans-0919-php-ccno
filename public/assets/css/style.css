@@ -39,7 +39,7 @@
 .event {
     width: 19.5rem;
     height: 19.5rem;
-    border: solid black;
+    border: solid var(--dark);
 }.type {
      height: 40px;
      width: 60%;
