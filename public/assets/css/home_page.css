@@ -39,12 +39,12 @@
 }
 
 .event-title {
-    background-color: #FFFBFD;
+    background-color: var(--light);
 }
 
 .type {
     background-color: var(--primary-color-transparent);
-    color: #FFFBFD;
+    color: var(--light);
 }
 
 .event-title {
