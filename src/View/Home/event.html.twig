@@ -3,7 +3,7 @@
     <div class="events_container d-flex flex-wrap justify-content-around">
         {% for event in events %}
         <div class="event m-3 position-relative cover_image">
-            <img class="w-100 h-100 event_image" src="{{ event.image }}">
+            <img class="w-100 h-100 event_image" src="{{ event.image }}" alt="image de {{  event.name }}">
             <a href="#events"><p class="type position-absolute fixed-top mt-4 p-1">{{ event.name }}</p></a>
             <a href="#events">
                 <div class="event-title position-absolute fixed-bottom pl-2 pt-2">
