@@ -2,8 +2,8 @@
     <h2 class="ml-lg-5 ml-4">ÉVÈNEMENTS</h2>
     <div class="events_container d-flex flex-wrap justify-content-around">
         {% for event in events %}
-        <div class="event m-3 position-relative cover_image" style="background-image: url('{{ event.image }}')">
-            <!--<a href="#events"><img class="w-100 h-100" src=""></a>-->
+        <div class="event m-3 position-relative cover_image">
+            <img class="w-100 h-100 event_image" src="{{ event.image }}">
             <a href="#events"><p class="type position-absolute fixed-top mt-4 p-1">{{ event.name }}</p></a>
             <a href="#events">
                 <div class="event-title position-absolute fixed-bottom pl-2 pt-2">

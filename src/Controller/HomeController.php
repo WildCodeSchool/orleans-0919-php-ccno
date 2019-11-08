@@ -8,6 +8,7 @@
 
 namespace App\Controller;
 
+use App\Model\EventCarousselManager;
 use App\Model\EventManager;
 
 class HomeController extends AbstractController
@@ -22,10 +23,13 @@ class HomeController extends AbstractController
      */
     public function index()
     {
+        $carousselManager= new EventCarousselManager('event');
+        $caroussels = $carousselManager->selectPictureCaroussel();
         $eventManager = new EventManager('event');
         $events = $eventManager->showEventHomePage();
         return $this->twig->render('Home/index.html.twig', [
             'events' => $events,
+            'caroussels'=> $caroussels
         ]);
     }
 }
