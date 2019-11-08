@@ -35,8 +35,13 @@
     color: var(--primary-color) ;
 }
 
-.event-title, .type {
+.event-title {
     background-color: #FFFBFD;
+}
+
+.type {
+    background-color: var(--primary-color-transparent);
+    color: #FFFBFD;
 }
 
 .event-title {

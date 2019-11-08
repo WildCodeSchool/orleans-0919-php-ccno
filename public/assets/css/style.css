@@ -1,6 +1,7 @@
 /* HEADER */
 * {
     --primary-color: #ff5499;
+    --primary-color-transparent: rgba(255, 84, 153, 0.90);
     --light-primary-color: #ffd6f1;
     --dark: #1e1918;
     --light: #fffbfd;
