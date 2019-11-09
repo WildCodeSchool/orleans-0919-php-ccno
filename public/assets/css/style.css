@@ -1,6 +1,7 @@
 /* HEADER */
 * {
     --primary-color: #ff5499;
+    --primary-color-transparent: rgba(255, 84, 153, 0.90);
     --light-primary-color: #ffd6f1;
     --footer-text-secondary-color : #c3c7cb;
     --dark: #1e1918;
@@ -36,14 +37,6 @@
     list-style: none;
 }
 /* CONTENT */
-.event {
-    width: 19.5rem;
-    height: 19.5rem;
-    border: solid var(--dark);
-}.type {
-     height: 40px;
-     width: 60%;
- }
 /*CARROUSEL*/
 .img-fluid {
     height: 500px;
@@ -51,7 +44,6 @@
 /* BROCHURE */
 .card-brochure {
     width: 18rem;
-    height: 14rem;
     background-color: var(--primary-color);
 }
 

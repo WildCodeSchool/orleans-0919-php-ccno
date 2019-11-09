@@ -1,0 +1,52 @@
+.know_more:hover {
+    color: var(--primary-color)
+}
+
+.presentation {
+    border: solid 2px var(--primary-color);
+    border-radius: 4px;
+    font-size: 1.2em;
+}
+
+.presentation_img {
+    width: 25rem;
+    height: 25rem;
+    border-radius: 4px;
+}
+
+.event {
+    width: 25rem;
+    height: 25rem;
+    border-radius: 5px;
+    box-shadow: 0 4px 14px -5px rgba(0,0,0,0.46);
+
+}
+
+.event_image {
+    border-radius: 5px;
+    object-fit:cover;
+}
+
+.type {
+    width: 75%;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.datetime {
+    color: var(--primary-color) ;
+}
+
+.event-title {
+    background-color: var(--light);
+}
+
+.type {
+    background-color: var(--primary-color-transparent);
+    color: var(--light);
+}
+
+.event-title {
+    border-radius: 0 0 4px 4px;
+}
