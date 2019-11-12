@@ -1,7 +1,6 @@
 body {
     width: 100%;
     height: auto;
-    color: var(--dark);
 }
 .banniere img {
     width: 100%;
@@ -39,9 +38,13 @@ hr {
 }
 
 a {
-    color: black;
+    color: var(--dark);
 }
 
 a:hover {
     color: var(--primary-color);
+}
+
+.accueil_studio, .equipe, .presentation_CCNO {
+    color: var(--dark);
 }

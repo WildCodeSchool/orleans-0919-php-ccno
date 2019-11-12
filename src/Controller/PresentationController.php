@@ -21,6 +21,6 @@ class PresentationController extends AbstractController
      */
     public function index()
     {
-        return $this->twig->render('Page_CCNO/Presentation_CCNO.html.twig');
+        return $this->twig->render('Page_CCNO/presentation_CCNO.html.twig');
     }
 }

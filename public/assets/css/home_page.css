@@ -35,11 +35,13 @@
 }
 
 .datetime {
+    font-size: 1.2em;
     color: var(--primary-color) ;
 }
 
 .event-title {
     background-color: var(--light);
+    border-radius: 0 0 4px 4px;
 }
 
 .type {
@@ -47,6 +49,3 @@
     color: var(--light);
 }
 
-.event-title {
-    border-radius: 0 0 4px 4px;
-}
