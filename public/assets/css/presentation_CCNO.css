@@ -1,0 +1,47 @@
+body {
+    width: 100%;
+    height: auto;
+    color: var(--dark);
+}
+.banniere img {
+    width: 100%;
+    height: auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* Presentation */
+
+.titre_presentation_CCNO {
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 100px;
+    margin-top: 13%;
+    font-size: 100px;
+    color: var(--light);
+    letter-spacing: 0.1em;
+}
+
+hr {
+    margin: 5% 15% 5% 15%;
+    background-color: var(--primary-color);
+}
+
+/* equipe */
+
+.card_presentation_ccno {
+    box-shadow: 0 4px 14px -5px rgba(0,0,0,0.46);
+}
+
+.reference{
+    border-color: var(--dark);
+}
+
+a {
+    color: black;
+}
+
+a:hover {
+    color: var(--primary-color);
+}
