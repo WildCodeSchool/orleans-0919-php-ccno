@@ -23,8 +23,13 @@
     <p class="row my-3 mx-5 mb-5">Inscrit au sein du Théâtre d’Orléans auprès de la Scène nationale, du Centre dramatique national et le CADO,
         le CCNO contribue à la dynamique collective de ce quartier de la création favorisant le développement de projets créatifs et innovants au service des publics.</p>
 </section>
-<hr/>
-    {% set teams = {name: 'Name', postOccuped: 'Poste Occupe', mail: 'contact@mail.com', blabla: '',} %}
+    <hr/>
+    {% set teams = [
+        {'name': 'Name', 'postOccuped': 'Poste Occupe', 'mail': 'contact@mail.com'},
+        {'name': 'Name', 'postOccuped': 'Poste Occupe', 'mail': 'contact@mail.com'},
+        {'name': 'Name', 'postOccuped': 'Poste Occupe', 'mail': 'contact@mail.com'},
+        {'name': 'Name', 'postOccuped': 'Poste Occupe', 'mail': 'contact@mail.com'}
+    ] %}
 <section class="equipe">
     <h2 class="row justify-content-center justify-content-md-start mx-5">L'ÉQUIPE</h2>
     <div class="container-fluid">
@@ -34,9 +39,9 @@
                 <img src="https://via.placeholder.com/250x330" class="card-img-top" alt="">
                 <div class="card_body_presentation_ccno">
                     <ul class="list-group list-group-flush list_group_presentation_ccno">
-                        <li class="list-group-item reference">{{ teams.name }}</li>
-                        <li class="list-group-item reference">{{ teams.postOccuped }}</li>
-                        <li class="list-group-item reference"><a href="contact@mail.com">{{ teams.mail }}</a></li>
+                        <li class="list-group-item reference">{{ team.name }}</li>
+                        <li class="list-group-item reference">{{ team.postOccuped }}</li>
+                        <li class="list-group-item reference"><a href="contact@mail.com">{{ team.mail }}</a></li>
                     </ul>
                 </div>
             </div>
