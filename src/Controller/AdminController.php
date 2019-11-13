@@ -44,10 +44,4 @@ class AdminController extends AbstractController
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
-    public function show(int $id)
-    {
-        $adminManager = new AdminManager();
-        $event = $adminManager->selectEventById($id);
-        return $this->twig->render('Admin/show.html.twig', ['event' => $event]);
-    }
 }
