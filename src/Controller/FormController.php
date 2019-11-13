@@ -21,6 +21,6 @@ class FormController extends AbstractController
      */
     public function index()
     {
-        return $this->twig->render('Formulaire/form.html.twig');
+        return $this->twig->render('Contact/form.html.twig');
     }
 }

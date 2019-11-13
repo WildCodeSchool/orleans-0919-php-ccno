@@ -7,30 +7,28 @@
 {% block content %}
 <section class="contact">
     <h1 class="contact-title row my-5 mx-5">Contactez-nous</h1>
-    <p class="row my-5 mx-5">Entrez vos information et votre message dans le formulaire ci-dessous nous vous répondrons dans les plus brefs délais.
-        (les champs sont obligatoires)
-    </p>
+    <p class="row ">Entrez vos information et votre message dans le formulaire ci-dessous,
+    <p>nous vous répondrons dans les plus brefs délais.</p>
+     <p>les champs sont obligatoires.</p>
     <form method="post" action="" class="form-home-page">
         <div class="form-row justify-content-around">
-            <div class="form-group col-10 col-sm-5 col-lg-5 col-xl-5 my-5 ">
+            <div class="form-group col-10 col-sm-5 col-lg-5 col-xl-5 my-3 ">
                 <label for="name"></label>
                 <input type="text" name="name" class="form-control rounded " id="name" placeholder="Doe" required >
             </div>
-            <div class="form-group col-10 col-sm-5 col-lg-5 col-xl-5 my-5">
+            <div class="form-group col-10 col-sm-5 col-lg-5 col-xl-5 my-3">
                 <label for="mail"></label>
                 <input type="email" name="mail" class="form-control rounded " id="mail" placeholder="John@example.com" required>
             </div>
         </div>
         <div class="form-row justify-content-around">
-            <div class="form-group col-10 col-sm-5 col-lg-5 col-xl-11 my-2">
+            <div class="form-group col-10 col-xl-11 my-4 ">
                 <label for="message"></label>
-                <textarea class="form-control rounded border border-dark" name="message" id="message" rows="6" required>Message</textarea>
+                <textarea class="form-control rounded border border-dark" name="message" id="message" rows="6" placeholder="Message" required></textarea>
             </div>
         </div>
         <div class="form-row justify-content-center">
-            <div class="textarea">
-                <button type="submit" class="far fa-paper-plane btn btn-primary col-10 col-sm-5 col-lg-5 col-xl-11 my-5 rounded"></button>
-            </div>
+            <button type="submit" class="send btn btn-primary my-5 rounded">Envoyer</button>
         </div>
     </form>
 </section>
