@@ -15,10 +15,28 @@ class EventManager extends AbstractManager
     public function showEventHomePage()
     {
 
-        return $this->pdo->query('SELECT image, title, datetime, name FROM ' . $this->table . ' e  
+        return $this->pdo->query('SELECT e.id, image, title, datetime, name , place FROM ' . $this->table . ' e  
          JOIN category c ON c.id = e.category_id
          JOIN representation r ON e.id = r.event_id
          ORDER BY datetime
          LIMIT ' . self::NUMBERPICTURE . ';')->fetchAll();
+    }
+
+    public function showEvent()
+    {
+        return $this->pdo->query('SELECT e.id, image, title, datetime, place, name FROM ' . $this->table . ' e  
+         JOIN category c ON c.id = e.category_id
+         JOIN representation r ON e.id = r.event_id
+         ORDER BY datetime;')->fetchAll();
+    }
+
+    public function selectEventById(int $id)
+    {
+        // prepared request
+        $statement = $this->pdo->prepare("SELECT * FROM $this->table JOIN category c ON c.id = event.category_id
+        JOIN representation r ON event.id = r.event_id WHERE event.id=:id");
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+        return $statement->fetch();
     }
 }

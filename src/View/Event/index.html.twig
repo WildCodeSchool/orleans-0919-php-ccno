@@ -1,4 +1,10 @@
 {% extends 'layout.html.twig' %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/home_page.css">
+    <link rel="stylesheet" href="/assets/css/event_style.css">
+{% endblock %}
+
 {% block content %}
     {% include 'Home/event.html.twig' %}
 {% endblock %}
