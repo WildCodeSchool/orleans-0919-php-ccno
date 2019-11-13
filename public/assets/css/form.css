@@ -1,5 +1,17 @@
 .far  {
-    width:10rem ;
-    height: 5rem;
-    border-radius:10px;
+    width:7rem ;
+    height: 4rem;
+}
+
+.form-control{
+    border-bottom: 2px solid black;
+}
+
+.fa-paper-plane {
+    font-size: 3em;
+    color: var(--light-primary-color);
+}
+
+.fa-paper-plane:hover{
+    color:var(--primary-color);
 }
