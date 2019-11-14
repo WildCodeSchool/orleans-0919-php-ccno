@@ -1,0 +1,6 @@
+{% extends 'layoutAdmin.html.twig' %}
+{% block content %}
+    <h1>Modification de l'évènement {{ event.title }}</h1>
+    {% include 'Admin/_form.html.twig' %}
+    <a href="/Admin/index">Retour</a>
+{% endblock %}

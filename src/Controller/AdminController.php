@@ -34,14 +34,16 @@ class AdminController extends AbstractController
         return $this->twig->render('Admin/index.html.twig', ['events' => $events]);
     }
 
-
-    /**
-     * Display admin informations specified by $id
-     *
-     * @param int $id
-     * @return string
-     * @throws \Twig\Error\LoaderError
-     * @throws \Twig\Error\RuntimeError
-     * @throws \Twig\Error\SyntaxError
-     */
+    public function edit($id)
+    {
+        $adminManager = new AdminManager();
+        $event = $adminManager->selectEventById($id);
+        $categories = $adminManager->selectCategory();
+        $representations = $adminManager->selectRepresentation();
+        return $this->twig->render('Admin/edit.html.twig', [
+            'event' => $event,
+            'categories' => $categories,
+            'representations' => $representations,
+        ]);
+    }
 }

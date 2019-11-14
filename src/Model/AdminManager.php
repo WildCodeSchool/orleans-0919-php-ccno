@@ -43,4 +43,14 @@ class AdminManager extends AbstractManager
 
         return $statement->fetch();
     }
+
+    public function selectCategory(): array
+    {
+        return $this->pdo->query('SELECT name FROM category')->fetchAll();
+    }
+
+    public function selectRepresentation(): array
+    {
+        return $this->pdo->query('SELECT * FROM representation')->fetchAll();
+    }
 }
