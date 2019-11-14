@@ -98,8 +98,7 @@ class AdminManager extends AbstractManager
 
     public function selectAllEvents(): array
     {
-        return $this->pdo->query('SELECT * FROM ' . $this->table . ' JOIN category c ON c.id = event.category_id
-         JOIN representation r ON event.id = r.event_id')->fetchAll();
+        return $this->pdo->query('SELECT * FROM ' . $this->table . ' ;')->fetchAll();
     }
 
     public function selectEventById(int $id)

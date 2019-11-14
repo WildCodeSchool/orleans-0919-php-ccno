@@ -167,9 +167,11 @@ class AdminController extends AbstractController
                 $errors = $this->cleanFormular($admin);
                 if (empty($errors)) {
                     $adminManager->insertEvent($admin);
+                    header('Location: /admin/index');
                 } else {
-                    return $this->twig->render('Admin/add.html.twig',
-                        ['categories' => $categories, 'errors' => $errors]);
+                    return $this->twig->render('Admin/add.html.twig', [
+                        'categories' => $categories,
+                        'errors' => $errors]);
                 }
             }
         }
