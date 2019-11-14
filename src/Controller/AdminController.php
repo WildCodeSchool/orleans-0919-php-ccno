@@ -34,16 +34,60 @@ class AdminController extends AbstractController
         return $this->twig->render('Admin/index.html.twig', ['events' => $events]);
     }
 
-    public function edit($id)
+    public function edit($id): string
     {
-        $adminManager = new AdminManager();
-        $event = $adminManager->selectEventById($id);
-        $categories = $adminManager->selectCategory();
-        $representations = $adminManager->selectRepresentation();
+        $errors = [];
+        $eventManager = new AdminManager();
+        $event = $eventManager->selectOneById($id);
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $data = array_map('trim', $_POST);
+
+            if (empty($_FILES['image'])) {
+                $data['image'] = $event['image'];
+            } else {
+                if (is_uploaded_file($_FILES['image']['tmp_name'])) {
+                    $uploadDir = 'uploads/';
+                    $uploadFile = $uploadDir . $_FILES['image']['name'];
+                    move_uploaded_file($_FILES['image']['tmp_name'], $uploadFile);
+                    $data['image'] = "/$uploadFile";
+                }
+            }
+            if (!empty($data['ccno'])) {
+                $data['ccno'] = 1;
+            } else {
+                $data['ccno'] = 0;
+            }
+            if (!empty($data['caroussel'])) {
+                $data['caroussel'] = 1;
+            } else {
+                $data['caroussel'] = 0;
+            }
+            $errors = $this->validation($data);
+            if (empty($errors)) {
+                $eventManager->updateEvent($data);
+                header('Location: /admin/index/');
+            }
+        }
+
         return $this->twig->render('Admin/edit.html.twig', [
             'event' => $event,
-            'categories' => $categories,
-            'representations' => $representations,
+            'data' => $data ?? [],
+            'errors' => $errors,
         ]);
+    }
+
+    private function validation(array $data): array
+    {
+        $errors = [];
+        if (empty($data['title'])) {
+            $errors['title'] = 'Le titre est manquant';
+        } elseif (strlen($data['title']) > 45) {
+            $errors['title'] = 'Le titre trop long';
+        }
+        if (empty($data['description'])) {
+            $errors['description'] = 'La description est manquante';
+        }
+        return $errors ?? [];
     }
 }
