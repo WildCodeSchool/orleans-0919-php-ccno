@@ -1,26 +1,17 @@
-
-
-
-.event {
-
+.date {
+    width: 22rem;
 }
 
-.event_image {
-
+.date a {
+    font-size: 2.4rem;
 }
 
-.type {
-
+.date a:hover {
+    text-decoration: none;
+    transition-duration: 0.2s;
+    color: var(--primary-color);
 }
 
-.datetime {
-
-}
-
-.event-title {
-
-}
-
-.type {
-
+.arrow {
+    margin-bottom: 0.264rem;
 }
