@@ -9,8 +9,8 @@
 }
 
 .form-control{
-    border-bottom: 2px solid black;
-    background-color: #fffafd ;
+    border-bottom: 2px solid var(--dark);
+    background-color: var(--xlight-primary-color) ;
 }
 
 .send {
@@ -25,6 +25,6 @@
 }
 
 .btn{
-    background-color: white;
+    background-color: var(--light);
     letter-spacing: .1em;
 }
