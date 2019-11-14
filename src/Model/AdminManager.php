@@ -42,23 +42,6 @@ class AdminManager extends AbstractManager
         return $statement->fetch();
     }
 
-    public function selectCategory(): array
-    {
-        return $this->pdo->query('SELECT name FROM category')->fetchAll();
-    }
-
-    public function selectRepresentation(): array
-    {
-        return $this->pdo->query('SELECT * FROM representation')->fetchAll();
-    }
-
-    public function delete(int $id): void
-    {
-        $statement = $this->pdo->prepare("DELETE FROM $this->table WHERE event.id=:id");
-        $statement->bindValue('id', $id, \PDO::PARAM_INT);
-        $statement->execute();
-    }
-
     public function updateEvent(array $data)
     {
         $statement = $this->pdo->prepare("UPDATE ". self::TABLE  ."
