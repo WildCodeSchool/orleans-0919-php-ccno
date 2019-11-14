@@ -18,7 +18,6 @@ class AdminManager extends AbstractManager
      *
      */
     const TABLE = 'event';
-    const TABLE_REPRESENTATION = 'representation';
 
     /**
      *  Initializes this class.
@@ -26,7 +25,6 @@ class AdminManager extends AbstractManager
     public function __construct()
     {
         parent::__construct(self::TABLE);
-        $representation = self::TABLE_REPRESENTATION;
     }
 
     public function selectAllCategory()

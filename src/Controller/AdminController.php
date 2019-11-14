@@ -75,6 +75,42 @@ class AdminController extends AbstractController
         return $this->twig->render('Admin/edit.html.twig', ['admin' => $admin]);
     }
 
+    private function cleanInput(array $input): array
+    {
+        foreach ($input as $key => $value) {
+            $data[$key] = trim($value);
+            $data[$key] = stripslashes($data[$key]);
+            $data[$key] = htmlspecialchars($data[$key]);
+            $data[$key] = htmlentities($data[$key]);
+        }
+        return $input;
+    }
+
+    private function cleanFormular(array $input): array
+    {
+        $errors=[];
+
+        $this->cleanInput($input);
+
+        if (empty($input['title'])) {
+            $errors[0] = 'Empty Title';
+        }
+
+        if (empty($input['image'])) {
+            $errors[1] = 'Empty Image';
+        }
+
+        if (empty($input['description'])) {
+            $errors[2] = 'Empty Description';
+        }
+
+        if (empty($input['category'])) {
+            $errors[3] = 'Empty Category';
+        }
+
+        return $errors;
+    }
+
 
     /**
      * Display admin creation page
@@ -91,22 +127,13 @@ class AdminController extends AbstractController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $adminManager = new AdminManager();
+            $uploadFile = '';
 
             if (!empty($_FILES['file'])) {
-                if ($_FILES['file']['error'] > 0) {
-                    var_dump('Erreur n°'.$_FILES['file']['error']);
-                }
                 if (is_uploaded_file($_FILES['file']['tmp_name'])) {
                     $uploadDir = 'uploads/';
                     $uploadFile = $uploadDir . $_FILES['file']['name'];
-                    if (move_uploaded_file($_FILES['file']['tmp_name'], $uploadFile)) {
-                        echo 'Fichier enregistré';
-                        var_dump($_FILES['file']['name']);
-                    } else {
-                        var_dump('Erreur lors de l\'enregistrement');
-                    }
-                } else {
-                    var_dump('Fichier non uploadé');
+                    move_uploaded_file($_FILES['file']['tmp_name'], $uploadFile);
                 }
             }
 
@@ -137,9 +164,13 @@ class AdminController extends AbstractController
                     'description' => $_POST['description'],
                     'image' => $uploadFile,
                 ];
-                var_dump($admin);
-                var_dump($_POST);
-                $adminManager->insertEvent($admin);
+                $errors = $this->cleanFormular($admin);
+                if (empty($errors)) {
+                    $adminManager->insertEvent($admin);
+                } else {
+                    return $this->twig->render('Admin/add.html.twig',
+                        ['categories' => $categories, 'errors' => $errors]);
+                }
             }
         }
         return $this->twig->render('Admin/add.html.twig', ['categories' => $categories]);
