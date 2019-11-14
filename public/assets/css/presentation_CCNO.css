@@ -34,14 +34,43 @@ hr {
     box-shadow: 0 4px 14px -5px rgba(0,0,0,0.46);
 }
 
-.reference{
-    border-color: var(--dark);
+.card-title {
+    background-color: var(--primary-color);
+    color: var(--light);
+    margin: 8% 25% 5% 0;
+    padding: 10px;
+    font-size: 1.5rem;
 }
 
-a {
-    color: black;
+.card-text {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
-a:hover {
+.far{
+    background-color: var(--light);
+    color: var(--dark);
+    font-size: 3rem;
+    margin-left: 39%;
+}
+
+.far:hover{
     color: var(--primary-color);
+    background-color: var(--light);
+}
+
+.img_atelier , .img_description{
+    width: 35rem;
+    height: 35rem;
+    border-radius: 4px;
+}
+
+.accueil_studio_paragraphe , .presentation_CCNO_paragraphe{
+    border: solid 2px var(--primary-color);
+    border-radius: 4px;
+    font-size: 1.2em;
+}
+.card_body_presentation_ccno{
+    border: 1px solid white ;
 }
