@@ -31,7 +31,7 @@
             <select id="inputState" name="choosenCategory" class="form-control">
                 <option selected>Choose...</option>
                 {% for category in categories %}
-                <option>{{categories.name}}</option>
+                <option>{{category.name}}</option>
                 {% endfor %}
             </select>
         </div>
@@ -62,5 +62,5 @@
         <label for="category">Catégorie</label>
         <input type="text" class="form-control" name="category" id="category" placeholder="Soirée spectacle">
     </div>
-    <button type="submit" name="category" class="btn btn-primary">Ajouter une catégorie</button>
+    <button type="submit" name="categorySubmit" class="btn btn-primary">Ajouter une catégorie</button>
 </form>

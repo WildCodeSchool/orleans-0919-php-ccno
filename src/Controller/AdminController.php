@@ -81,10 +81,12 @@ class AdminController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $adminManager = new AdminManager();
             $admin = [
-                'title' => $_POST['title'],
+                'nameCategory' => $_POST['category'],
             ];
-            $id = $adminManager->insert($admin);
-            header('Location:/admin/show/' . $id);
+            if (isset($_POST['categorySubmit'])) {
+                var_dump($_POST);
+                $adminManager->insertCategory($admin);
+            }
         }
 
         return $this->twig->render('Admin/add.html.twig', ['categories' => $categories]);
@@ -102,5 +104,4 @@ class AdminController extends AbstractController
         $adminManager->delete($id);
         header('Location:/admin/index');
     }
-
 }

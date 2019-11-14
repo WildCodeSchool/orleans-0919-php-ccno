@@ -3,7 +3,6 @@
 
 namespace App\Model;
 
-
 class AdminManager extends AbstractManager
 {
     /**
@@ -31,7 +30,9 @@ class AdminManager extends AbstractManager
     public function insertEvent(array $admin): int
     {
         // prepared request
-        $statement = $this->pdo->prepare("INSERT INTO $this->table (title, image, description, ccno, caroussel, category_id, price, place, datetime, duration, event_id) VALUES (:title)");
+        $statement = $this->pdo->prepare("INSERT INTO $this->table 
+        (title, image, description, ccno, caroussel, category_id, price, place, datetime, duration, event_id) 
+        VALUES (:title)");
         $statement->bindValue('title', $admin['title'], \PDO::PARAM_STR);
 
         if ($statement->execute()) {
@@ -47,9 +48,8 @@ class AdminManager extends AbstractManager
     public function insertCategory(array $admin): int
     {
         // prepared request
-        $statement = $this->pdo->prepare("INSERT INTO category (name) VALUES (:name)");
-        $statement->bindValue('name', $admin['name'], \PDO::PARAM_STR);
-
+        $statement = $this->pdo->prepare("INSERT INTO `ccno`.`category` (`name`) VALUES (:name);");
+        $statement->bindValue('name', $admin['nameCategory'], \PDO::PARAM_STR);
         if ($statement->execute()) {
             return (int)$this->pdo->lastInsertId();
         }
@@ -82,5 +82,4 @@ class AdminManager extends AbstractManager
 
         return $statement->execute();
     }
-
 }
