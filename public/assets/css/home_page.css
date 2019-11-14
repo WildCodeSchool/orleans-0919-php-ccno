@@ -56,5 +56,10 @@
 }
 
 .event_button .btn {
+    font-size: 1.2rem;
     width: 25rem;
+}
+
+.event_button .btn:hover {
+    color: var(--primary-color);
 }
