@@ -1,0 +1,66 @@
+<form class ="m-2 ml-5 mr-5" method="post">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="title">Titre</label>
+            <input type="text" class="form-control" name="title" id="title" placeholder="Nom de l'évenement">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="Location">Localisation</label>
+            <input type="text" class="form-control" name="location" id="Location" placeholder="Théatre d'Orléans">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlFile1">Example file input</label>
+        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            <label for="price">Prix</label>
+            <input type="number" class="form-control" name="price"  id="price" placeholder="Prix en euro">
+        </div>
+        <div class="form-group col-md-3">
+            <label for="date">Date</label>
+            <input type="datetime-local" class="form-control" name="date"  id="date" placeholder="10 novembre 2021">
+        </div>
+        <div class="form-group col-md-3">
+            <label for="time">Durée</label>
+            <input type="text" class="form-control" name="duration" id="time" placeholder="Durée">
+        </div>
+        <div class="form-group col-md-3">
+            <label for="inputState">Catégorie</label>
+            <select id="inputState" name="choosenCategory" class="form-control">
+                <option selected>Choose...</option>
+                {% for category in categories %}
+                <option>{{categories.name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="description">Description</label>
+        <textarea class="form-control" id="description" name="description"></textarea>
+    </div>
+    <div class="form-group">
+        <div class="form-check">
+            <input class="form-check-input" name="ccno"  type="checkbox" id="ccno">
+            <label class="form-check-label" for="ccno">
+                Est-ce un évenement produit par le CCNO ?
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" name="caroussel" type="checkbox" id="caroussel">
+            <label class="form-check-label" for="caroussel">
+                Voulez-vous le mettre dans le carrousel ?
+            </label>
+        </div>
+    </div>
+    <button type="submit" name="event" class="btn btn-primary">Ajouter</button>
+</form>
+<h2 class="my-5 ml-4">Ajouter une catégorie</h2>
+<form class ="m-2 mx-5 my-5" method="post">
+    <div class="form-group col-md-6">
+        <label for="category">Catégorie</label>
+        <input type="text" class="form-control" name="category" id="category" placeholder="Soirée spectacle">
+    </div>
+    <button type="submit" name="category" class="btn btn-primary">Ajouter une catégorie</button>
+</form>
