@@ -1,0 +1,16 @@
+* {
+    --primary-color: #ff5499;
+    --primary-color-transparent: rgba(255, 84, 153, 0.90);
+    --light-primary-color: #ffd6f1;
+    --footer-text-secondary-color : #c3c7cb;
+    --dark: #1e1918;
+    --light: #fffbfd;
+}
+
+/*Admin/Show*/
+
+.text_admin {
+
+    color : var(--dark);
+    font-size: 1.2em;
+}
