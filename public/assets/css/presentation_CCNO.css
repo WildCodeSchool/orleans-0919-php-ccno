@@ -77,6 +77,13 @@ hr {
     border: solid 2px var(--primary-color);
     border-radius: 4px;
     font-size: 1.2em;
-    overflow: scroll;
+    overflow: auto;
 }
 
+@media screen and (max-width: 500px) {
+    .accueil_studio_paragraphe , .presentation_CCNO_paragraphe{
+        overflow: hidden;
+        width: auto;
+        height: auto;
+    }
+}
