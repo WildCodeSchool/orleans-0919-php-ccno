@@ -7,7 +7,7 @@
 {% block content %}
 <div class="banniere">
     <h1 class="row justify-content-center justify-content-md-center titre_presentation_CCNO">CCNO</h1>
-    <img src="/assets/images/la_presentation_ccno.jpg" class="" alt="">
+    <img src="/assets/images/la_presentation_ccno.jpg" class="mb-4" alt="">
 </div>
 <section class="presentation_CCNO">
     <h2 class="row justify-content-center justify-content-md-start mx-5 my-5">PRÉSENTATION</h2>
@@ -43,9 +43,9 @@
         <div class="card_presentation_ccno col-11 col-sm-5 col-lg-5 col-xl-3 mt-5" style="width:500px">
             <img class="card-img-top" src="https://via.placeholder.com/250x330" alt="Card image">
             <div class="card-img-overlay p-0">
-                <h4 class="card-title presentation_title">{{ team.name }}</h4>
+                <h4 class="card-title presentation_title">{{ team.postOccuped }}</h4>
             </div>
-            <p class="card-text presentation_test my-3 text-center">{{ team.postOccuped }}</p>
+            <p class="card-text presentation_test my-3 text-center">{{ team.name }}</p>
             <div class="fa-envelope_center">
                 <a href="mailto:{{ team.mail }}" class= "btn btn-primary stretched-link far fa-envelope p-0 mb-3"></a>
             </div>
