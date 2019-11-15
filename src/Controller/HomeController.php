@@ -25,7 +25,7 @@ class HomeController extends AbstractController
     {
         $carousselManager= new EventCarousselManager('event');
         $caroussels = $carousselManager->selectPictureCaroussel();
-        $eventManager = new EventManager('event');
+        $eventManager = new EventManager();
         $events = $eventManager->showEventHomePage();
         return $this->twig->render('Home/index.html.twig', [
             'events' => $events,
