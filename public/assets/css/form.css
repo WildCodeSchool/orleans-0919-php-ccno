@@ -1,0 +1,33 @@
+.contact p{
+    color:var(--dark) ;
+    margin-left: 4%;
+}
+
+label {
+    color: var(--dark);
+}
+
+.form-control{
+    border-bottom: 2px solid var(--dark);
+    background-color: var(--xlight-primary-color) ;
+}
+
+.send {
+    font-size: 2em;
+
+    color:var(--primary-color);
+    text-align: center;
+}
+
+.send:hover{
+    color: var(--light-primary-color);
+}
+
+.btn{
+    background-color: var(--light);
+    letter-spacing: .1em;
+}
+
+.errors {
+    color: var(--alert-color);
+}

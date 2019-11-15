@@ -3,47 +3,71 @@
     --primary-color: #ff5499;
     --primary-color-transparent: rgba(255, 84, 153, 0.90);
     --light-primary-color: #ffd6f1;
+    --xlight-primary-color: #fffafd;
     --footer-text-secondary-color : #c3c7cb;
     --dark: #1e1918;
     --light: #fffbfd;
+    --alert-color: #ff0000;
 }
+
+main, nav{
+    max-width: 1600px;
+    margin: auto;
+}
+
 .logo {
-    width: 15vh ;
+    width: 10rem ;
 }
 .navbar {
-    font-size: 1.3em;
+    font-size: 1.1rem;
     letter-spacing: 0.1em;
 }
 .navbar-light .navbar-nav .nav-link {
     color: black;
 }
-.navbar-light .navbar-nav .nav-link:hover {
+.navbar-light .navbar-nav .nav-link a:hover {
     color: var(--primary-color);
 }
-.dropdown-item:hover {
-    color: var(--primary-color);
-    font-size: 1.1em;
+
+.dropdown-item {
+    font-size: 1rem;
 }
+
+.dropdown-item:hover, nav a:hover{
+    color: var(--primary-color);
+}
+
+
 .social_media {
-    font-size: 3vh;
+    font-size: 2rem;
 }
+
 .navbar-nav {
     width: 100%;
     justify-content: space-around;
 }
 .social_logo {
     display: flex;
-    padding-left: 0;
+    padding: 0;
     list-style: none;
 }
+
 /* CONTENT */
 /*CARROUSEL*/
 .img-fluid {
-    height: 500px;
+    height: 32rem;
+    object-fit:cover;
 }
 /* BROCHURE */
+
+.card_brochure_container {
+    height: 32rem;
+}
+
 .card-brochure {
-    width: 18rem;
+    width: 20rem;
+    height: 50%;
+    border-radius: 3px;
     background-color: var(--primary-color);
 }
 
