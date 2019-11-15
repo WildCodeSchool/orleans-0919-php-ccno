@@ -23,9 +23,8 @@ class AdminController extends AbstractController
     private function cleanInput(array $input): array
     {
         foreach ($input as $key => $value) {
-            $data[$key] = trim($value);
+            $input[$key] = trim($value);
         }
-
         return $input;
     }
 
