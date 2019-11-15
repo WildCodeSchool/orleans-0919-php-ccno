@@ -19,10 +19,7 @@ class FormController extends AbstractController
     private function cleanInput(array $input): array
     {
         foreach ($input as $key => $value) {
-            $data[$key] = trim($value);
-            $data[$key] = stripslashes($data[$key]);
-            $data[$key] = htmlspecialchars($data[$key]);
-            $data[$key] = htmlentities($data[$key]);
+            $input[$key] = trim($value);
         }
         return $input;
     }
