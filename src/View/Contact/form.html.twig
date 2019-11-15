@@ -1,0 +1,44 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}CCNO/Contact{% endblock %}
+
+{% block stylesheet %}<link rel="stylesheet" href="/assets/css/form.css"/>{% endblock %}
+
+{% block content %}
+<section class="contact">
+    <h1 class="contact-title row m-3 m-md-5">Contactez-nous</h1>
+    {% if success is not null %}
+    <div class="alert alert-success">votre message a été envoyé</div>
+    {% endif %}
+    <div class="">
+        <p>Entrez vos informations et votre message dans le formulaire ci-dessous,
+        <p>nous vous répondrons dans les plus brefs délais.</p>
+        <p>les champs sont obligatoires.</p>
+    </div>
+    <form method="post" action="" class="form-home-page mt-5">
+        <div class="form-row justify-content-around">
+            <div class="form-group col-10 col-sm-5 my-3 ">
+                <label for="name">Votre nom</label>
+                <div class="errors">{{ errors['name'] }}</div>
+                <input type="text" name="name" class="form-control rounded " id="name" placeholder="Doe">
+            </div>
+            <div class="form-group col-10 col-sm-5 my-3">
+                <label for="email">Votre email</label>
+                <div class="errors">{{ errors['email'] }}</div>
+                <input type="email" name="email" class="form-control rounded " id="email" placeholder="John@example.com">
+
+            </div>
+        </div>
+        <div class="form-row justify-content-center">
+            <div class="form-group col-10 col-xl-11 my-4 ">
+                <label for="message">Votre message</label>
+                <div class="errors">{{ errors['message'] }}</div>
+                <textarea class="form-control rounded border border-dark" name="message" id="message" rows="6" placeholder="Message"></textarea>
+            </div>
+            <button type="submit" class="send btn btn-primary mb-5 mt-4 rounded">Envoyer</button>
+
+        </div>
+
+    </form>
+</section>
+{% endblock %}
