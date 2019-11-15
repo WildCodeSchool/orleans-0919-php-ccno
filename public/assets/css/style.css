@@ -3,9 +3,11 @@
     --primary-color: #ff5499;
     --primary-color-transparent: rgba(255, 84, 153, 0.90);
     --light-primary-color: #ffd6f1;
+    --xlight-primary-color: #fffafd;
     --footer-text-secondary-color : #c3c7cb;
     --dark: #1e1918;
     --light: #fffbfd;
+    --alert-color: #ff0000;
 }
 .logo {
     width: 12rem ;
