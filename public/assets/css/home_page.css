@@ -52,7 +52,7 @@
 }
 
 .event_button {
-    width: fit-content;
+    text-align: center;
 }
 
 .event_button .btn {
