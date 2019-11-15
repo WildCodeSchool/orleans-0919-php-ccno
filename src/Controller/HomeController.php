@@ -27,9 +27,26 @@ class HomeController extends AbstractController
         $caroussels = $carousselManager->selectPictureCaroussel();
         $eventManager = new EventManager('event');
         $events = $eventManager->showEventHomePage();
+        $globalEvents = $eventManager->showEvent();
+        $currentDateMY = ['month' => date("n"), 'year' => date("Y")];
+
+        $isSetDate = [];
+        foreach ($globalEvents as $event) {
+            $isSetDate[] = $event['month'] . "/" . $event['year'];
+        }
+
+        while (!in_array($currentDateMY['month'] . '/' . $currentDateMY['year'], $isSetDate)) {
+            if ($currentDateMY['month'] < 12) {
+                $currentDateMY['month'] += 1;
+            } elseif ($currentDateMY['month'] === 12) {
+                $currentDateMY['month'] = 1;
+                $currentDateMY['year'] += 1;
+            }
+        }
         return $this->twig->render('Home/index.html.twig', [
             'events' => $events,
-            'caroussels'=> $caroussels
+            'caroussels'=> $caroussels,
+            'currentDateMY' => $currentDateMY,
         ]);
     }
 }
