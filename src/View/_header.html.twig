@@ -1,6 +1,6 @@
 {% block header %}
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <header class="bg-light">
+        <nav class="navbar navbar-expand-xl p-2">
             <a class="navbar-brand" href="/Home/index"><img
                         src="/assets/images/ccno-logo.png" alt="logo"
                         class="logo"></a>
@@ -16,8 +16,8 @@
                             Evènement <span class="sr-only">(current)</span>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Programme</a>
-                            <a class="dropdown-item" href="/event/index/{{ currentDate }}">Création</a>
+                            <a class="dropdown-item p-2" href="#">Programme</a>
+                            <a class="dropdown-item p-2" href="/event/index/{{ currentDate }}">Création</a>
                         </div>
                     </li>
                     <li class="nav-item">
@@ -27,7 +27,7 @@
                         <a class="nav-link" href="/presentation/index">CCNO</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link pr-0" href="#">Contact</a>
                     </li>
                     <ul class="social_logo">
                         <li class="nav-item">

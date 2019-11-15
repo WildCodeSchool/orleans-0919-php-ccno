@@ -7,45 +7,65 @@
     --dark: #1e1918;
     --light: #fffbfd;
 }
+
+main, nav{
+    max-width: 1600px;
+    margin: auto;
+}
+
 .logo {
-    width: 12rem ;
+    width: 10rem ;
 }
 .navbar {
-    font-size: 1.3em;
+    font-size: 1.1rem;
     letter-spacing: 0.1em;
 }
 .navbar-light .navbar-nav .nav-link {
     color: black;
 }
-.navbar-light .navbar-nav .nav-link:hover {
+.navbar-light .navbar-nav .nav-link a:hover {
     color: var(--primary-color);
 }
-.dropdown-item:hover {
-    color: var(--primary-color);
-    font-size: 1.1em;
+
+.dropdown-item {
+    font-size: 1rem;
 }
+
+.dropdown-item:hover, nav a:hover{
+    color: var(--primary-color);
+}
+
+
 .social_media {
-    font-size: 3vh;
+    font-size: 2rem;
 }
+
 .navbar-nav {
     width: 100%;
     justify-content: space-around;
 }
 .social_logo {
     display: flex;
-    padding-left: 0;
+    padding: 0;
     list-style: none;
 }
+
 /* CONTENT */
 /*CARROUSEL*/
 .img-fluid {
-    height: 500px;
+    height: 32rem;
     object-fit:cover;
 }
 /* BROCHURE */
+
+.card_brochure_container {
+    height: 32rem;
+}
+
 .card-brochure {
-    width: 18rem;
-    height: 14rem;
+    width: 20rem;
+    height: 50%;
+    border-radius: 3px;
     background-color: var(--primary-color);
 }
 
