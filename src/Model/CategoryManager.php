@@ -7,7 +7,7 @@ class CategoryManager extends AbstractManager
 {
     const TABLE = 'category';
 
-    /**$this->table
+    /**
      *  Initializes this class.
      */
     public function __construct()
