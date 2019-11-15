@@ -1,32 +1,29 @@
-<form class ="m-2 ml-5 mr-5" method="post" enctype="multipart/form-data">
+<form class="m-2 ml-5 mr-5" action="" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="id" value="{{ event.id }}">
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="title">Titre</label>
-            <input type="text" class="form-control" name="title" id="title" placeholder="Nom de l'évenement">
-            <span>{{ errors.0 }}</span>
-        </div>
-        <div class="form-group col-md-3">
-            <label for="inputState">Catégorie</label>
-            <select id="inputState" name="choosenCategory" class="form-control">
-                {% for category in categories %}
-                    <option value="{{ category.id }}">{{category.name}}</option>
-                {% endfor %}
-            </select>
+            <input type="text" class="form-control" name="title" id="title" placeholder="Nom de l'évenement"
+                   value="{{ event.title }}">
+            <span>{{ errors.title }}</span>
         </div>
     </div>
+    <figure>
+        <img src="/{{ event.image }}" alt="{{ event.title }}" class="img-thumbnail">
+    </figure>
     <div class="form-group">
         <label for="image">Image</label>
-        <input type="file" class="form-control-file" name="file" id="image">
-        <span>{{ errors.1 }}</span>
+        <input type="file" class="form-control-file" name="image" id="image">
     </div>
     <div class="form-group">
         <label for="description">Description</label>
-        <textarea class="form-control" id="description" name="description"></textarea>
-        <span>{{ errors.2 }}</span>
+        <textarea class="form-control" id="description" name="description">{{ event.description }}</textarea>
+        <span>{{ errors.description }}</span>
+
     </div>
     <div class="form-group">
         <div class="form-check">
-            <input class="form-check-input" name="ccno"  type="checkbox" id="ccno">
+            <input class="form-check-input" name="ccno" type="checkbox" id="ccno">
             <label class="form-check-label" for="ccno">
                 Est-ce un évenement produit par le CCNO ?
             </label>
@@ -38,5 +35,8 @@
             </label>
         </div>
     </div>
-    <button type="submit" name="event" class="btn btn-primary">Ajouter</button>
+    <input type="submit" value="Modifier">
 </form>
+
+
+
