@@ -1,0 +1,17 @@
+.date {
+    width: 22rem;
+}
+
+.date a {
+    font-size: 2.4rem;
+}
+
+.date a:hover {
+    text-decoration: none;
+    transition-duration: 0.2s;
+    color: var(--primary-color);
+}
+
+.arrow {
+    margin-bottom: 0.264rem;
+}
