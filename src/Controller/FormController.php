@@ -52,13 +52,12 @@ class FormController extends AbstractController
             $data = $this->cleanInput($_POST);
             $errors = $this->validate($data);
             if (empty($errors)) {
-                header('Location: /form/index/?success=ok');
+                header('Location: /home/index/?success=ok');
             }
         }
         return $this->twig->render('Contact/form.html.twig', [
             'data'  => $data ?? [],
             'errors' => $errors,
-            'success' => $_GET['success'] ?? null
         ]);
     }
 }

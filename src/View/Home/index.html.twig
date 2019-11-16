@@ -5,6 +5,9 @@
 {% endblock %}
 
 {% block content %}
+    {% if success is not null %}
+        <div class="alert alert-success">votre message a été envoyé</div>
+    {% endif %}
     {% include 'Home/brochure.html.twig' %}
     {% include 'Home/shortpresentation.html.twig' %}
     {% include 'Home/event.html.twig' %}

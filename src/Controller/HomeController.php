@@ -29,7 +29,8 @@ class HomeController extends AbstractController
         $events = $eventManager->showEventHomePage();
         return $this->twig->render('Home/index.html.twig', [
             'events' => $events,
-            'caroussels'=> $caroussels
+            'caroussels'=> $caroussels,
+            'success' => $_GET['success'] ?? null
         ]);
     }
 }
