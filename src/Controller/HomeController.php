@@ -47,6 +47,7 @@ class HomeController extends AbstractController
             'events' => $events,
             'caroussels'=> $caroussels,
             'currentDateMY' => $currentDateMY,
+            'success' => $_GET['success'] ?? null,
         ]);
     }
 }
