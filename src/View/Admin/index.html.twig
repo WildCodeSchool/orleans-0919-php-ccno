@@ -1,15 +1,24 @@
 {% extends 'layoutAdmin.html.twig' %}
 {% block content %}
-    <div class="container-fluid m-5">
-        <h1>Évènements</h1>
-        <ul>
-            {% for event in events %}
-                <li class="text_admin"><a href="/admin/edit/{{ event.id }}">{{ event.title }}</a></li>
-            {% else %}
-                <li>Nothing to display</li>
-            {% endfor %}
-        </ul>
+    <div class="container-fluid m-5 d-flex">
+        <div>
+            <h1>Évènements</h1>
+            <ul>
+                {% for event in events %}
+                    <li class="text_admin"><a href="/admin/edit/{{ event.id }}">{{ event.title }}</a>
+                        <a href="/representation/index{{ r.id }}">representation</a></li>
 
-            <a href="/event/add"><button type="button" class="btn btn-info">Ajouter</button></a>
+                {% else %}
+                    <li>Nothing to display</li>
+                {% endfor %}
+            </ul>
+
+            <a href="/event/add">
+                <button type="button" class="btn btn-info">Ajouter</button>
+            </a>
+        </div>
+        <div>
+            <h2><a href="/representation/index">Représentation</a></h2>
+        </div>
     </div>
 {% endblock %}

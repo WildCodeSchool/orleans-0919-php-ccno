@@ -1,0 +1,20 @@
+{% extends 'layoutAdmin.html.twig' %}
+{% block content %}
+    <div class="container-fluid m-5">
+        <h1>Représentation</h1>
+        <ul>
+            {% for representation in representations %}
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ representation.datetime }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ representation.title }}</h6>
+                        <p class="card-text">{{ representation.place }}</p>
+                        <a href="#" class="card-link">Modifier</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </ul>
+
+            <a href="/event/add"><button type="button" class="btn btn-info">Ajouter</button></a>
+    </div>
+{% endblock %}
