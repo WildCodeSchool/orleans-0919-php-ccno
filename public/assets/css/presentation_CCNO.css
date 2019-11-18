@@ -34,7 +34,7 @@ hr {
 }
 
 .presentation_title {
-    background-color: var(--primary-color);
+    background-color: var(--primary-color-transparent);
     color: var(--light);
     margin: 8% 25% 5% 0;
     padding: 10px;
