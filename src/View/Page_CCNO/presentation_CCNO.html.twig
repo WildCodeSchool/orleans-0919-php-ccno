@@ -5,60 +5,71 @@
 {% block stylesheet %}<link rel="stylesheet" href="/assets/css/presentation_CCNO.css"/>{% endblock %}
 
 {% block content %}
-<div class="banniere">
-    <h1 class="row justify-content-center titre_presentation_CCNO">CCNO</h1>
-    <img src="/assets/images/la_presentation_ccno.jpg" class="" alt="...">
+<div class="banniere_ccno">
+    <h1 class="titre_presentation_CCNO">CCNO</h1>
+    <img src="/assets/images/la_presentation_ccno.jpg" class="mb-4 m-0" alt="">
 </div>
 <section class="presentation_CCNO">
-    <h2 class="row justify-content-center justify-content-md-start m-5">PRÉSENTATION</h2>
-    <p class="row my-3 mx-5">Dirigé depuis janvier 2017 par Maud Le Pladec, le Centre chorégraphique national d’Orléans pose la question des publics comme son enjeu central.
+    <h2 class="row justify-content-center justify-content-md-start mx-5 my-5">PRÉSENTATION</h2>
+    <div class="presentation_CCNO_description d-flex justify-content-around m-lg-5 m-4">
+        <div class="presentation_CCNO_paragraphe mr-lg-5 p-4 d-flex flex-column justify-content-between">
+    <p>Dirigé depuis janvier 2017 par Maud Le Pladec, le Centre chorégraphique national d’Orléans pose la question des publics comme son enjeu central.
         La création dans toutes ses formes, de manière transversale, parcourt le projet dans toutes ses dimensions auprès de tous les publics.
         Le CCNO propose de partager, d’explorer avec les gens l’autour, l’avant et l’après.
         Ateliers lundi after work, samedi brunch, stages, festival, performances, ouvertures publiques, conférences, créations participatives,
         résonnent avec le travail de la création des artistes en résidence au CCNO ou programmés au Théâtre d’Orléans.</p>
-    <p class="row my-3 mx-5">Le CCNO ouvre ses portes le plus largement possible, arpente la ville et les territoires, les espaces publics, les écoles,
+    <p>Le CCNO ouvre ses portes le plus largement possible, arpente la ville et les territoires, les espaces publics, les écoles,
         les associations et initie de nombreux projets en partenariat, « avec » dans un mouvement d’« aller vers ».</p>
-    <p class="row my-3 mx-5">Multiplier les pratiques, les regards, donner l’impulse dans un va-et-vient permanent entre le voir et le faire, pour le spectateur comme pour l’amateur de toutes les danses.
+    <p>Multiplier les pratiques, les regards, donner l’impulse dans un va-et-vient permanent entre le voir et le faire, pour le spectateur comme pour l’amateur de toutes les danses.
         tout est question d’accessibilité, ou comment rendre possible la rencontre, tisser du lien. Faire danser la ville pour la visibilité de chaque corps dans l’espace de la cité.</p>
-    <p class="row my-3 mx-5 mb-5">Inscrit au sein du Théâtre d’Orléans auprès de la Scène nationale, du Centre dramatique national et le CADO,
+    <p>Inscrit au sein du Théâtre d’Orléans auprès de la Scène nationale, du Centre dramatique national et le CADO,
         le CCNO contribue à la dynamique collective de ce quartier de la création favorisant le développement de projets créatifs et innovants au service des publics.</p>
-</section>
-    <hr/>
-    {% set teams = [
-        {'name': 'José Alves Da Assuncao', 'postOccuped': 'Directeur technique', 'mail': 'josealves@ccn-orleans.com'},
-        {'name': 'Pauline Heng', 'postOccuped': 'Comptable', 'mail': 'paulineheng@ccn-orleans.com'},
-        {'name': 'Raïssa Kim', 'postOccuped': 'Secrétaire générale', 'mail': 'raissakim@ccn-orleans.com'},
-        {'name': 'Maud Le Pladec', 'postOccuped': 'Directrice', 'mail': 'infos@ccn-orleans.com'}
-    ] %}
-<section class="equipe">
-    <h2 class="row justify-content-center justify-content-md-start mx-5">L'ÉQUIPE</h2>
-    <div class="container-fluid">
-        <div class="row no-gutters justify-content-around">
-            {% for team in teams %}
-            <div class="card_presentation_ccno col-11 col-sm-5 col-lg-5 col-xl-2 my-5" style="">
-                <img src="https://via.placeholder.com/250x330" class="card-img-top" alt="">
-                <div class="card_body_presentation_ccno">
-                    <ul class="list-group list-group-flush list_group_presentation_ccno">
-                        <li class="list-group-item reference">{{ team.name }}</li>
-                        <li class="list-group-item reference">{{ team.postOccuped }}</li>
-                        <li class="list-group-item reference"><a href="#">{{ team.mail }}</a></li>
-                    </ul>
-                </div>
-            </div>
-            {% endfor %}
+        </div>
+        <div class="d-sm-none d-lg-block d-none">
+            <img src="/assets/images/hall.jpg" class="img_description" alt="">
         </div>
     </div>
 </section>
-<hr/>
+    <hr/>
+    {% set teams = [
+        {'name': 'José Alves', 'postOccuped': 'Directeur technique', 'mail': 'josealves@ccn-orleans.com'},
+        {'name': 'Pauline Heng', 'postOccuped': 'Comptable', 'mail': 'paulineheng@ccn-orleans.com'},
+        {'name': 'Raïssa Kim', 'postOccuped': 'Secrétaire générale', 'mail': 'raissakim@ccn-orleans.com'},
+    ] %}
+<section class="equipe">
+    <h2 class="row justify-content-center justify-content-md-start mx-5">L'ÉQUIPE</h2>
+    <div class="row no-gutters justify-content-around">
+        {% for team in teams %}
+        <div class="card_presentation_ccno col-11 col-sm-5 col-lg-5 col-xl-3 mt-5" style="width:500px">
+            <img class="card-img-top" src="https://via.placeholder.com/250x330" alt="Card image">
+            <div class="card-img-overlay p-0">
+                <h4 class="card-title presentation_title">{{ team.postOccuped }}</h4>
+            </div>
+            <p class="card-text presentation_test my-3 text-center">{{ team.name }}</p>
+            <div class="fa-envelope_center">
+                <a href="mailto:{{ team.mail }}" class= "btn btn-primary stretched-link far fa-envelope p-0 mb-3"></a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+    <hr/>
 <section class="accueil_studio">
-    <h2 class="row justify-content-center justify-content-md-start m-5">ACCUEIL STUDIO</h2>
-    <p class="row my-3 mx-5">Pour chercher, fabriquer, créer, les artistes ont besoin de travailler dans les studios. Le CCNO leur ouvre ses portes autant que possible.
+    <h2 class="row justify-content-center justify-content-md-start mx-5 my-5">ACCUEIL STUDIO</h2>
+    <div class="accueil_studio_description d-flex justify-content-around m-lg-5 m-4">
+        <div class="accueil_studio_paragraphe mr-lg-5 p-4 d-flex flex-column">
+    <p>Pour chercher, fabriquer, créer, les artistes ont besoin de travailler dans les studios. Le CCNO leur ouvre ses portes autant que possible.
         Grâce à leur présence dans le Centre chorégraphique et dans la ville, les imaginaires s’ouvrent et voyagent.
         Comment partager avec vous leur démarche artistique ? Chaque équipe accueillie est associée à cet enjeu essentiel de mise en commun et de rencontre.</p>
-    <p class="row my-3 mx-5">L’accueil-studio :<br>
+    <p>L’accueil-studio :<br>
         Grâce au dispositif de l’accueil-studio, le CCNO peut coproduire et accueillir une dizaine de projets chorégraphiques chaque année.
         Ce dispositif est devenu aujourd’hui un maillon incontournable de la production en danse et un levier considérable pour pouvoir répéter et créer.</p>
-    <p class="row my-3 mx-5 mb-5">L’ouverture publique :<br>
+    <p>L’ouverture publique :<br>
         L’ouverture publique est prévue pour chaque fin de résidence. Espace de rencontre et de dialogue entre un travail en cours de création et un public, ce moment unique et privilégié est en entrée libre.</p>
+        </div>
+        <div class="d-sm-none d-lg-block d-none">
+        <img src="/assets/images/atelier.jpg" class="img_atelier" alt="">
+        </div>
+    </div>
 </section>
 {% endblock %}
