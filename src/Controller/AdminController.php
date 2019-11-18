@@ -154,4 +154,14 @@ class AdminController extends AbstractController
         }
         return $this->twig->render('Admin/add.html.twig', ['categories' => $categories]);
     }
+
+    public function delete(int $id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $adminManager = new AdminManager();
+            $adminManager->delete($id);
+
+            header('Location:/admin/index');
+        }
+    }
 }

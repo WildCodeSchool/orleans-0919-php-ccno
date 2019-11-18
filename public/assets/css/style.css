@@ -10,11 +10,6 @@
     --alert-color: #ff0000;
 }
 
-main, nav{
-    max-width: 1600px;
-    margin: auto;
-}
-
 .logo {
     width: 10rem ;
 }
