@@ -18,7 +18,6 @@ use App\Model\AdminManager;
 class AdminController extends AbstractController
 {
 
-
     /**
      * Display admin listing
      *
@@ -42,7 +41,7 @@ class AdminController extends AbstractController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $data = array_map('trim', $_POST);
-
+            $data['image'] = $event['image'];
             if (empty($_FILES['image'])) {
                 $data['image'] = $event['image'];
             } else {
@@ -89,5 +88,15 @@ class AdminController extends AbstractController
             $errors['description'] = 'La description est manquante';
         }
         return $errors ?? [];
+    }
+
+    public function delete(int $id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $adminManager = new AdminManager();
+            $adminManager->delete($id);
+
+            header('Location:/admin/index');
+        }
     }
 }
