@@ -10,7 +10,11 @@
 /*Admin/Show*/
 
 .text_admin {
-
     color : var(--dark);
     font-size: 1.2em;
 }
+
+.text-info {
+    font-size: 1.2em;
+}
+

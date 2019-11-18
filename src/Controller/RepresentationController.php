@@ -24,7 +24,8 @@ class RepresentationController extends AbstractController
     public function index($id)
     {
         $represManager = new RepresentationManager();
-        $representation = $represManager->selectAllRepresentations($id);
-        return $this->twig->render('AdminRepresentation/index.html.twig', ['representation' => $representation]);
+        $representations = $represManager->showOne($id);
+
+        return $this->twig->render('AdminRepresentation/index.html.twig', ['representations' => $representations]);
     }
 }

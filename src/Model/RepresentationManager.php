@@ -12,11 +12,13 @@ class RepresentationManager extends AbstractManager
         parent::__construct(self::TABLE);
     }
 
-    public function selectAllRepresentations($id)
+    public function showOne($id)
     {
-        $statement = $this->pdo->prepare('SELECT * FROM ' . $this->table . ' r 
-        JOIN event e ON e.id = r.event_id WHERE id=:id');
+        $statement = $this->pdo->prepare('SELECT * FROM representation r 
+        join event e on e.id = r.event_id WHERE r.id=:id');
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
+
+        return $statement->fetchAll();
     }
 }
