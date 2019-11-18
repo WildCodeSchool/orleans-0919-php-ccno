@@ -3,9 +3,9 @@ body {
     height: auto;
 }
 
-.banniere img {
+.banniere_ccno img {
     width: 100%;
-    height: auto;
+    height: 100%;
     position: relative;
     z-index: 1;
 }
@@ -13,16 +13,13 @@ body {
 /* Presentation */
 
 .titre_presentation_CCNO {
-    position: absolute;
-    display: none;
-    z-index: 2;
-    height: 100px;
-    margin: 13% 2% 9% 0;
-    font-size: 2.3rem;
-    top: 30px;
-    left: auto;
+    margin: 20% 37%;
     color: var(--light);
-    letter-spacing: 0.1em;
+    font-size: 8vw;
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: auto;
 }
 
 hr {
@@ -81,5 +78,8 @@ hr {
         overflow: hidden;
         width: auto;
         height: auto;
+    }
+    hr{
+        background-color: var(--dark);
     }
 }
