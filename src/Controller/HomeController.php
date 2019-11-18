@@ -25,7 +25,7 @@ class HomeController extends AbstractController
     {
         $carousselManager= new EventCarousselManager('event');
         $caroussels = $carousselManager->selectPictureCaroussel();
-        $eventManager = new EventManager('event');
+        $eventManager = new EventManager();
         $events = $eventManager->showEventHomePage();
         $globalEvents = $eventManager->showEvent();
         $currentDateMY = ['month' => date("n"), 'year' => date("Y")];
@@ -47,6 +47,7 @@ class HomeController extends AbstractController
             'events' => $events,
             'caroussels'=> $caroussels,
             'currentDateMY' => $currentDateMY,
+            'success' => $_GET['success'] ?? null,
         ]);
     }
 }
