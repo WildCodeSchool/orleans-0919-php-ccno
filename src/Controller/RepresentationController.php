@@ -10,7 +10,6 @@ namespace App\Controller;
 
 use App\Model\RepresentationManager;
 
-
 class RepresentationController extends AbstractController
 {
 
@@ -26,9 +25,6 @@ class RepresentationController extends AbstractController
     {
         $represManager = new RepresentationManager();
         $representation = $represManager->selectAllRepresentations($id);
-        var_dump($representation);
-        exit();
-
         return $this->twig->render('AdminRepresentation/index.html.twig', ['representation' => $representation]);
     }
 }
