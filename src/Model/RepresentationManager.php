@@ -15,7 +15,7 @@ class RepresentationManager extends AbstractManager
     public function addRepresentation(array $admin): int
     {
         $statement = $this->pdo->prepare("INSERT INTO " .  $this->table . "
-        (title, image, description, ccno, caroussel, category_id, price, place, datetime, duration, event_id) VALUES
+        (price, place, datetime, duration, event_id) VALUES
         (:price, :place, :datetime, :duration, :event_id)
         ");
         $statement->bindValue('price', $admin['price'], \PDO::PARAM_STR);

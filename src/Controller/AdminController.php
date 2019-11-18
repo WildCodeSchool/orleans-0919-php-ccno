@@ -165,10 +165,55 @@ class AdminController extends AbstractController
         return $this->twig->render('Admin/add.html.twig', ['categories' => $categories]);
     }
 
+    private function validationRepresentation(array $data): array
+    {
+        $errors = [];
+        $dataClean = $this->cleanInput($data);
+        if (empty($dataClean['price'])) {
+            $errors['price'] = 'Le prix est manquant';
+        }
+        if (empty($dataClean['place'])) {
+            $errors['place'] = 'Le lieu est manquant';
+        }
+        if (empty($dataClean['datetime'])) {
+            $errors['datetime'] = 'La date et l\'heure sont manquantes';
+        }
+        if (empty($dataClean['duration'])) {
+            $errors['duration'] = 'La durée est manquante';
+        }
+        return $errors ?? [];
+    }
+
     public function addRepresentation()
     {
         $eventManager = new EventManager();
         $events = $eventManager->selectAllEvents();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $represManager = new RepresentationManager();
+            $admin = [
+                'price' => $_POST['price'],
+                'event_id' => $_POST['choosenEvent'],
+                'place' => $_POST['location'],
+                'datetime' => $_POST['date'],
+                'duration' => $_POST['duration'],
+            ];
+            $errors = $this->validationRepresentation($admin);
+            if (empty($errors)) {
+                $date = new \DateTime($admin['datetime']);
+                $admin['datetime'] = $date->format('Y-m-d H:i:s');
+                $price = $admin['price'];
+                if (stristr($price, ',')) {
+                    $priceTable = explode(',', $price);
+                    $admin['price'] = implode('.', $priceTable);
+                }
+                $represManager->addRepresentation($admin);
+                header('Location: /admin/index');
+            } else {
+                return $this->twig->render('Admin/addRepresentation', [
+                    "events" => $events,
+                    'errors' => $errors]);
+            }
+        }
         return $this->twig->render('Admin/addRepresentation', ["events" => $events]);
     }
 }

@@ -3,20 +3,24 @@
         <div class="form-group col-md-6">
             <label for="Location">Localisation</label>
             <input type="text" class="form-control" name="location" id="Location" placeholder="Théatre d'Orléans">
+            <span>{{ errors.place }}</span>
         </div>
     </div>
     <div class="form-row">
         <div class="form-group col-md-3">
             <label for="price">Prix</label>
             <input type="text" class="form-control" name="price"  id="price" placeholder="Prix en euro">
+            <span>{{ errors.price }}</span>
         </div>
         <div class="form-group col-md-3">
             <label for="date">Date</label>
-            <input type="datetime-local" class="form-control" name="date"  id="date" placeholder="jj-mm-aaaa hh:mm">
+            <input type="datetime-local" class="form-control" name="date"  id="date" placeholder="jj/mm/aaaa hh:mm">
+            <span>{{ errors.datetime }}</span>
         </div>
         <div class="form-group col-md-3">
             <label for="time">Durée</label>
             <input type="text" class="form-control" name="duration" id="time" placeholder="Durée">
+            <span>{{ errors.duration }}</span>
         </div>
         <div class="form-group col-md-3">
             <label for="inputState">Evenement</label>
