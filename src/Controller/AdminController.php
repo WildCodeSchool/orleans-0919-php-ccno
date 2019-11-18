@@ -13,6 +13,7 @@ use App\Model\AdminManager;
 use App\Model\EventManager;
 use App\Model\CategoryManager;
 use App\Model\RepresentationManager;
+use DateTime;
 
 /**
  * Class AdminController
@@ -199,7 +200,7 @@ class AdminController extends AbstractController
             ];
             $errors = $this->validationRepresentation($admin);
             if (empty($errors)) {
-                $date = new \DateTime($admin['datetime']);
+                $date = new DateTime($admin['datetime']);
                 $admin['datetime'] = $date->format('Y-m-d H:i:s');
                 $price = $admin['price'];
                 if (stristr($price, ',')) {
