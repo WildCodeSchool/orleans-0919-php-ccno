@@ -115,6 +115,14 @@ class AdminController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $eventManager = new EventManager();
             $uploadFile = '';
+            if (isset($_POST['categorySubmit'])) {
+                $category = [
+                    'nameCategory' => $_POST['category'],
+                ];
+                $categoryManager->insertCategory($category);
+                header('Location: /admin/add');
+                return $this->twig->render('Admin/add.html.twig', ['categories' => $categories]);
+            }
             if (!empty($_FILES['image'])) {
                 if (is_uploaded_file($_FILES['image']['tmp_name'])) {
                     $uploadDir = 'uploads/';
