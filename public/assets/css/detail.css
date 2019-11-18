@@ -1,0 +1,15 @@
+.containe {
+    border: 1px solid black;
+}
+
+.imageDetail {
+    width: 25rem;
+    height: 25rem;
+    border-radius: 4px;
+}
+
+.detail {
+    border: solid 2px var(--primary-color);
+    border-radius: 4px;
+    font-size: 1.2em;
+}
