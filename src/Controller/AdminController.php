@@ -159,21 +159,4 @@ class AdminController extends AbstractController
         }
         return $this->twig->render('Admin/add.html.twig', ['categories' => $categories]);
     }
-
-    public function addCategory()
-    {
-        $categoryManager = new CategoryManager();
-        $categories = $categoryManager->selectAllCategory();
-
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if (isset($_POST['categorySubmit'])) {
-                $category = [
-                    'nameCategory' => $_POST['category'],
-                ];
-                $categoryManager->insertCategory($category);
-                header('Location: /admin/add');
-            }
-        }
-        return $this->twig->render('Admin/add.html.twig', ['categories' => $categories]);
-    }
 }
