@@ -9,7 +9,7 @@ class EventController extends AbstractController
 {
     public function index($month, $year)
     {
-        $eventManager = new EventManager('event');
+        $eventManager = new EventManager();
         $events = $eventManager->showEventPerMonth($month, $year);
         $globalevents = $eventManager->showEvent();
         setlocale(LC_TIME, "fr_FR");
@@ -48,7 +48,7 @@ class EventController extends AbstractController
 
     public function detail($id)
     {
-        $eventManager = new eventManager('event');
+        $eventManager = new EventManager();
         $detail = $eventManager->selectEventById($id);
         return $this->twig->render('Event/detail.html.twig', [
             'detail' => $detail

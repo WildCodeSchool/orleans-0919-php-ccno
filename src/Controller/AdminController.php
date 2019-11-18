@@ -18,7 +18,6 @@ use App\Model\AdminManager;
 class AdminController extends AbstractController
 {
 
-
     /**
      * Display admin listing
      *
