@@ -93,8 +93,11 @@ class AdminController extends AbstractController
 
     public function delete(int $id)
     {
-        $adminManager = new AdminManager();
-        $adminManager->delete($id);
-        header('Location:/admin/index');
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $adminManager = new AdminManager();
+            $adminManager->delete($id);
+
+            header('Location:/admin/index');
+        }
     }
 }
