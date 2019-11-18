@@ -10,6 +10,8 @@
 namespace App\Controller;
 
 use App\Model\AdminManager;
+use App\Model\EventManager;
+use App\Model\CategoryManager;
 
 /**
  * Class AdminController
@@ -17,7 +19,6 @@ use App\Model\AdminManager;
  */
 class AdminController extends AbstractController
 {
-
     /**
      * Display admin listing
      *
@@ -88,5 +89,92 @@ class AdminController extends AbstractController
             $errors['description'] = 'La description est manquante';
         }
         return $errors ?? [];
+    }
+
+    private function cleanInput(array $input): array
+    {
+        foreach ($input as $key => $value) {
+            $input[$key] = trim($value);
+        }
+
+        return $input;
+    }
+
+    private function cleanFormular(array $input): array
+    {
+        $errors=[];
+        $inputFormular = $this->cleanInput($input);
+        $errors = $this->validation($inputFormular);
+        return $errors;
+    }
+
+    public function add()
+    {
+        var_dump($_POST);
+        $categoryManager = new CategoryManager();
+        $categories = $categoryManager->selectAllCategory();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            var_dump($_POST);
+            $eventManager = new EventManager();
+            $uploadFile = '';
+            if (!empty($_FILES['image'])) {
+                if (is_uploaded_file($_FILES['image']['tmp_name'])) {
+                    $uploadDir = 'uploads/';
+                    $uploadFile = $uploadDir . $_FILES['image']['name'];
+                    move_uploaded_file($_FILES['image']['tmp_name'], $uploadFile);
+                }
+                if (isset($_POST['event'])) {
+                    if (!empty($_POST['ccno'])) {
+                        $ccno = 1;
+                    } else {
+                        $ccno = 0;
+                    }
+                    if (!empty($_POST['caroussel'])) {
+                        $caroussel = 1;
+                    } else {
+                        $caroussel = 0;
+                    }
+                    $admin = [
+                        'title' => $_POST['title'],
+                        'category' => $_POST['choosenCategory'],
+                        'ccno' => $ccno,
+                        'caroussel' => $caroussel,
+                        'description' => $_POST['description'],
+                        'image' => $uploadFile,
+                    ];
+                    $errors = $this->cleanFormular($admin);
+                    var_dump($errors);
+                    if (empty($errors)) {
+                        $eventManager->insertEvent($admin);
+                        header('Location: /admin/index');
+                    } else {
+                        return $this->twig->render('Admin/add.html.twig', [
+                            'categories' => $categories,
+                            'errors' => $errors]);
+                    }
+                }
+            } else {
+                var_dump($_FILES);
+            }
+        }
+        return $this->twig->render('Admin/add.html.twig', ['categories' => $categories]);
+    }
+
+
+    public function addCategory()
+    {
+        $categoryManager = new CategoryManager();
+        $categories = $categoryManager->selectAllCategory();
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($_POST['categorySubmit'])) {
+                $category = [
+                    'nameCategory' => $_POST['category'],
+                ];
+                $categoryManager->insertCategory($category);
+                header('Location: /admin/add');
+            }
+        }
+        return $this->twig->render('Admin/add.html.twig', ['categories' => $categories]);
     }
 }
