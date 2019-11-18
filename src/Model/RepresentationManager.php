@@ -3,7 +3,6 @@
 
 namespace App\Model;
 
-
 class RepresentationManager extends AbstractManager
 {
     const TABLE = 'representation';

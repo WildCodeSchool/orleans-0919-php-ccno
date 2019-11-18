@@ -12,6 +12,7 @@ namespace App\Controller;
 use App\Model\AdminManager;
 use App\Model\EventManager;
 use App\Model\CategoryManager;
+use App\Model\RepresentationManager;
 
 /**
  * Class AdminController
@@ -166,6 +167,8 @@ class AdminController extends AbstractController
 
     public function addRepresentation()
     {
-        return $this->twig->render('Admin/addRepresentation');
+        $eventManager = new EventManager();
+        $events = $eventManager->selectAllEvents();
+        return $this->twig->render('Admin/addRepresentation', ["events" => $events]);
     }
 }
