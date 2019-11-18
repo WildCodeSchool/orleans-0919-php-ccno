@@ -110,13 +110,19 @@ class AdminController extends AbstractController
 
     public function add()
     {
-        var_dump($_POST);
         $categoryManager = new CategoryManager();
         $categories = $categoryManager->selectAllCategory();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            var_dump($_POST);
             $eventManager = new EventManager();
             $uploadFile = '';
+            if (isset($_POST['categorySubmit'])) {
+                $category = [
+                    'nameCategory' => $_POST['category'],
+                ];
+                $categoryManager->insertCategory($category);
+                header('Location: /admin/add');
+                return $this->twig->render('Admin/add.html.twig', ['categories' => $categories]);
+            }
             if (!empty($_FILES['image'])) {
                 if (is_uploaded_file($_FILES['image']['tmp_name'])) {
                     $uploadDir = 'uploads/';
@@ -153,8 +159,6 @@ class AdminController extends AbstractController
                             'errors' => $errors]);
                     }
                 }
-            } else {
-                var_dump($_FILES);
             }
         }
         return $this->twig->render('Admin/add.html.twig', ['categories' => $categories]);
