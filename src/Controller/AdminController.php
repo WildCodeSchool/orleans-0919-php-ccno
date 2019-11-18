@@ -163,4 +163,9 @@ class AdminController extends AbstractController
         }
         return $this->twig->render('Admin/add.html.twig', ['categories' => $categories]);
     }
+
+    public function addRepresentation()
+    {
+        return $this->twig->render('Admin/addRepresentation');
+    }
 }
