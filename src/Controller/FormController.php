@@ -9,6 +9,10 @@
 
 namespace App\Controller;
 
+use Symfony\Component\Mailer\Mailer;
+use Symfony\Component\Mailer\Transport;
+use Symfony\Component\Mime\Email;
+
 /**
  * Class FormController
  *
@@ -52,6 +56,18 @@ class FormController extends AbstractController
             $data = $this->cleanInput($_POST);
             $errors = $this->validate($data);
             if (empty($errors)) {
+                $transport = Transport::fromDsn(MAIL_DSN);
+                $mailer = new Mailer($transport);
+
+                $email = (new Email())
+                    ->from(MAIL_FROM)
+                    ->to(MAIL_TO)
+                    ->subject('Formulaire de contact du CCNO')
+                    ->html($this->twig->render('Contact/email.html.twig', [
+                        'data'  => $data,
+                    ]));
+
+                $mailer->send($email);
                 header('Location: /Home/index/?success=ok');
             }
         }
