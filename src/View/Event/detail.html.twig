@@ -3,24 +3,30 @@
     <link rel="stylesheet" href="/assets/css/detail.css">
 {% endblock %}
 {% block content %}
-<div class="container-fluid p-5">
-    <section>
-        <div class="d-flex justify-content-around m-lg-5 m-4">
-            <div class="mr-lg-5 p-4 d-flex flex-column justify-content-between detail">
-                <h2 class="type">{{ detail.title }}</h2>
-                <h3>{{ detail.name }}</h3>
-                <div>
-                    <p class="description">{{ detail.description }}</p>
+    <div class="container-fluid p-3">
+        <section>
+            <div class="d-flex justify-content-around m-lg-5 m-4">
+                <div class="mr-lg-5 p-5 d-flex flex-column detail">
+                    <div class="row  d-flex justify-content-sm-between justify-content-md-between ">
+                        <h1 class="type p-1 ">{{ detail.title }}</h1>
+                        <h2 class="price p-2">{{ detail.price }}€</h2>
+                    </div>
+                    <div>
+                        <h2 class="nameDetail type p-1 ">{{ detail.name }}</h2>
+
+                        <p class="description pt-3 pb-3">{{ detail.description }}</p>
+                    </div>
+                    <div class="mb-3">
+                        <p class="description p-2">Cette évènement se joue au {{ detail.place }},
+                            le {{ detail.datetime|date("d/m/Y à H:i") }}.</p>
+                    </div>
+                    <a class="btn btn-primary" href="https://ccn-orleans-reservations.mapado.com/" target="_blank">Réservation </a>
+
                 </div>
-                <div class="mb-3">
-                    <p class="description">Cette évènement se joue au {{ detail.place }},
-                        le {{ detail.datetime|date("d/m/Y à H:i") }}.</p>
+                <div class="d-sm-none d-lg-block d-none">
+                    <img src="{{ detail.image }}" alt="image {{ detail.name }}" class="imageDetail">
                 </div>
             </div>
-            <div class="d-sm-none d-lg-block d-none">
-                <img src="{{ detail.image }}" alt="image {{ detail.name }}" class="imageDetail">
-            </div>
-        </div>
-    </section>
-</div>
-    {% endblock %}
+        </section>
+    </div>
+{% endblock %}

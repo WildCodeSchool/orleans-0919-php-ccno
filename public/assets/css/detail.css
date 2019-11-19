@@ -1,12 +1,13 @@
 .imageDetail {
-    width: 25rem;
-    height: 25rem;
+    width: 35rem;
+    height: 35rem;
     border-radius: 4px;
-    object-fit:cover;
+    object-fit: cover;
 }
 
 .description {
     color: var(--dark);
+    width: 87%;
 }
 
 .detail {
@@ -15,8 +16,13 @@
     font-size: 1.2em;
 }
 
-/*.type {*/
-    /*text-transform: uppercase;*/
-    /*font-weight: bold;*/
-    /*width: -moz-fit-content;*/
-/*}*/
+.btn:hover {
+    background-color: var(--primary-color);
+    transition-duration: 0.15s;
+    box-shadow: 0 5px 10px -3px rgba(0, 0, 0, 0.29);
+    -webkit-box-shadow: 0 5px 10px -3px rgba(0, 0, 0, 0.29);
+    -moz-box-shadow: 0 5px 10px -3px rgba(0, 0, 0, 0.29);
+}
+.nameDetail {
+    color: var(--primary-color);
+}
