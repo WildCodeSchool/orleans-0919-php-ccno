@@ -99,6 +99,9 @@ class EventController extends AbstractController
         } elseif ($dateKey == 0 && $dateKey < count($isSetDate) - 1) {
             $previousDate = $isSetDate[$dateKey];
             $nextDate = $isSetDate[$dateKey + 1];
+        } else {
+            $previousDate = $isSetDate[$dateKey];
+            $nextDate = $isSetDate[$dateKey];
         }
         return [$previousDate, $nextDate];
     }
