@@ -151,7 +151,6 @@ class AdminController extends AbstractController
                         'image' => $uploadFile,
                     ];
                     $errors = $this->cleanFormular($admin);
-                    var_dump($errors);
                     if (empty($errors)) {
                         $eventManager->insertEvent($admin);
                         header('Location: /admin/index');
@@ -164,6 +163,16 @@ class AdminController extends AbstractController
             }
         }
         return $this->twig->render('Admin/add.html.twig', ['categories' => $categories]);
+    }
+
+    public function delete(int $id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $adminManager = new AdminManager();
+            $adminManager->delete($id);
+
+            header('Location:/admin/index');
+        }
     }
 
     private function validationRepresentation(array $data): array

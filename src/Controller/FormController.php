@@ -63,7 +63,7 @@ class FormController extends AbstractController
                     ->from(MAIL_FROM)
                     ->to(MAIL_TO)
                     ->subject('Formulaire de contact du CCNO')
-                    ->html($this->twig->render('Contact/email.html.twig', [
+                    ->html($this->twig->render('Contact/emailLayout.html.twig', [
                         'data'  => $data,
                     ]));
 
