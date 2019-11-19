@@ -1,6 +1,11 @@
-.banniere img {
+body {
     width: 100%;
     height: auto;
+}
+
+.banniere_ccno img {
+    width: 100%;
+    height: 100%;
     position: relative;
     z-index: 1;
 }
@@ -8,15 +13,13 @@
 /* Presentation */
 
 .titre_presentation_CCNO {
-    position: absolute;
-    display: none;
-    z-index: 2;
-    height: 100px;
-    font-size: 2.3rem;
-    top: 30px;
-    left: auto;
+    margin: 20% 37%;
     color: var(--light);
-    letter-spacing: 0.1em;
+    font-size: 8vw;
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: auto;
 }
 
 hr {
@@ -30,18 +33,53 @@ hr {
     box-shadow: 0 4px 14px -5px rgba(0,0,0,0.46);
 }
 
-.reference{
-    border-color: var(--dark);
+.presentation_title {
+    background-color: var(--primary-color-transparent);
+    color: var(--light);
+    margin: 8% 25% 5% 0;
+    padding: 10px;
+    font-size: 1.5rem;
 }
 
-a {
+.fa-envelope{
+    background-color: var(--light);
     color: var(--dark);
+    font-size: 3rem;
+    text-align: center;
 }
 
-a:hover {
+.fa-envelope:hover{
     color: var(--primary-color);
+    background-color: var(--light);
 }
 
-.accueil_studio, .equipe, .presentation_CCNO {
+.fa-envelope_center{
+    text-align: center;
+}
+
+.img_atelier , .img_description{
+    width: 35rem;
+    height: 35rem;
+    border-radius: 4px;
+}
+
+.accueil_studio_paragraphe , .presentation_CCNO_paragraphe{
+    width: 55rem;
+    height: 35rem;
+    border: solid 2px var(--primary-color);
+    border-radius: 4px;
+    font-size: 1.2em;
+    overflow: auto;
     color: var(--dark);
+}
+
+@media screen and (max-width: 500px) {
+    .accueil_studio_paragraphe , .presentation_CCNO_paragraphe{
+        overflow: hidden;
+        width: auto;
+        height: auto;
+    }
+    hr{
+        background-color: var(--dark);
+    }
 }

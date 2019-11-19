@@ -10,7 +10,15 @@
 /*Admin/Show*/
 
 .text_admin {
-
     color : var(--dark);
     font-size: 1.2em;
+}
+
+.text-representation {
+    font-size: 1.2em;
+}
+
+.card-representation {
+    width: 20rem;
+    font-size: 1.3em;
 }
