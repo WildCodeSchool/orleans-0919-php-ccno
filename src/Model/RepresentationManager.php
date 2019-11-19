@@ -12,9 +12,19 @@ class RepresentationManager extends AbstractManager
         parent::__construct(self::TABLE);
     }
 
+    public function showOne($id)
+    {
+        $statement = $this->pdo->prepare('SELECT * FROM representation r 
+         WHERE event_id=:id');
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetchAll();
+    }
+
     public function addRepresentation(array $admin): int
     {
-        $statement = $this->pdo->prepare("INSERT INTO " .  $this->table . "
+        $statement = $this->pdo->prepare("INSERT INTO " . $this->table . "
         (price, place, datetime, duration, event_id) VALUES
         (:price, :place, :datetime, :duration, :event_id)
         ");
