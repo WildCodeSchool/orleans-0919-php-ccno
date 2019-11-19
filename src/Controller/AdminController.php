@@ -194,9 +194,9 @@ class AdminController extends AbstractController
         if (empty($dataClean['datetime'])) {
             $errors['datetime'] = 'La date et l\'heure sont manquantes';
         }
-        if (empty($dataClean['duration']) > 100) {
+        if (empty($dataClean['duration'])) {
             $errors['duration'] = 'La durée est manquante';
-        } elseif (strlen($dataClean['duration'])) {
+        } elseif (strlen($dataClean['duration']) > 100) {
             $errors['duration'] = 'La durée est trop longue (plus de 100 caractères)';
         }
         return $errors ?? [];
@@ -241,6 +241,7 @@ class AdminController extends AbstractController
             $represManager = new RepresentationManager();
             $admin = [
                 'price' => $_POST['price'],
+                'id' => $id,
                 'event_id' => $_POST['choosenEvent'],
                 'place' => $_POST['location'],
                 'datetime' => $_POST['date'],
@@ -250,7 +251,7 @@ class AdminController extends AbstractController
             if (empty($errors)) {
                 $date = new DateTime($admin['datetime']);
                 $admin['datetime'] = $date->format('Y-m-d H:i:s');
-                $represManager->addRepresentation($admin);
+                $represManager->editRepresentation($admin);
                 header('Location: /admin/index');
             } else {
                 return $this->twig->render('Admin/editRepresentation.twig', [
