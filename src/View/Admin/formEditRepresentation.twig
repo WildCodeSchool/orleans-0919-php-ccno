@@ -1,0 +1,36 @@
+<form class ="m-2 ml-5 mr-5" method="post" enctype="multipart/form-data">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="Location">Localisation</label>
+            <input type="text" class="form-control" name="location" id="Location" placeholder="Théatre d'Orléans" value="{{ representations.place }}">
+            <span>{{ errors.place }}</span>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            <label for="price">Prix</label>
+            <input type="number" step="0.1" class="form-control" name="price"  id="price" placeholder="Prix en euro" value="{{ representations.price }}">
+            <span>{{ errors.price }}</span>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="date">Date</label>
+            <input type="text" class="form-control" name="date"  id="date" placeholder="jj/mm/aaaa hh:mm" value="{{ representations.datetime }}">
+            <span>{{ errors.datetime }}</span>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="time">Durée</label>
+            <input type="text" class="form-control" name="duration" id="time" placeholder="Durée" value="{{ representations.duration }}">
+            <span>{{ errors.duration }}</span>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="inputState">Evenement</label>
+            <select id="inputState" name="choosenEvent" class="form-control">
+                <option selected value="{{eventTitle.id}}">{{eventTitle.title}}</option>
+                {% for event in events %}
+                    <option value="{{event.id}}">{{event.title}}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+    <button type="submit" name="representation" class="btn btn-primary">Mettre à jour</button>
+</form>
