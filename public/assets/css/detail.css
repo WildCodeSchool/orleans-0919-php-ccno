@@ -1,0 +1,28 @@
+.imageDetail {
+    width: 35rem;
+    height: 35rem;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.description {
+    color: var(--dark);
+    width: 87%;
+}
+
+.detail {
+    border: solid 2px var(--primary-color);
+    border-radius: 4px;
+    font-size: 1.2em;
+}
+
+.btn:hover {
+    background-color: var(--primary-color);
+    transition-duration: 0.15s;
+    box-shadow: 0 5px 10px -3px rgba(0, 0, 0, 0.29);
+    -webkit-box-shadow: 0 5px 10px -3px rgba(0, 0, 0, 0.29);
+    -moz-box-shadow: 0 5px 10px -3px rgba(0, 0, 0, 0.29);
+}
+.nameDetail {
+    color: var(--primary-color);
+}

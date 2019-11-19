@@ -10,6 +10,10 @@
 namespace App\Controller;
 
 use App\Model\AdminManager;
+use App\Model\EventManager;
+use App\Model\CategoryManager;
+use App\Model\RepresentationManager;
+use DateTime;
 
 /**
  * Class AdminController
@@ -17,7 +21,6 @@ use App\Model\AdminManager;
  */
 class AdminController extends AbstractController
 {
-
     /**
      * Display admin listing
      *
@@ -42,6 +45,7 @@ class AdminController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $data = array_map('trim', $_POST);
             $data['image'] = $event['image'];
+
             if (empty($_FILES['image'])) {
                 $data['image'] = $event['image'];
             } else {
@@ -90,6 +94,78 @@ class AdminController extends AbstractController
         return $errors ?? [];
     }
 
+    private function cleanInput(array $input): array
+    {
+        foreach ($input as $key => $value) {
+            $input[$key] = trim($value);
+        }
+
+        return $input;
+    }
+
+    private function cleanFormular(array $input): array
+    {
+        $errors=[];
+        $inputFormular = $this->cleanInput($input);
+        $errors = $this->validation($inputFormular);
+        return $errors;
+    }
+
+    public function add()
+    {
+        $categoryManager = new CategoryManager();
+        $categories = $categoryManager->selectAllCategory();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $eventManager = new EventManager();
+            $uploadFile = '';
+            if (isset($_POST['categorySubmit'])) {
+                $category = [
+                    'nameCategory' => $_POST['category'],
+                ];
+                $categoryManager->insertCategory($category);
+                header('Location: /admin/add');
+                return $this->twig->render('Admin/add.html.twig', ['categories' => $categories]);
+            }
+            if (!empty($_FILES['image'])) {
+                if (is_uploaded_file($_FILES['image']['tmp_name'])) {
+                    $uploadDir = 'uploads/';
+                    $uploadFile = $uploadDir . $_FILES['image']['name'];
+                    move_uploaded_file($_FILES['image']['tmp_name'], $uploadFile);
+                }
+                if (isset($_POST['event'])) {
+                    if (!empty($_POST['ccno'])) {
+                        $ccno = 1;
+                    } else {
+                        $ccno = 0;
+                    }
+                    if (!empty($_POST['caroussel'])) {
+                        $caroussel = 1;
+                    } else {
+                        $caroussel = 0;
+                    }
+                    $admin = [
+                        'title' => $_POST['title'],
+                        'category' => $_POST['choosenCategory'],
+                        'ccno' => $ccno,
+                        'caroussel' => $caroussel,
+                        'description' => $_POST['description'],
+                        'image' => $uploadFile,
+                    ];
+                    $errors = $this->cleanFormular($admin);
+                    if (empty($errors)) {
+                        $eventManager->insertEvent($admin);
+                        header('Location: /admin/index');
+                    } else {
+                        return $this->twig->render('Admin/add.html.twig', [
+                            'categories' => $categories,
+                            'errors' => $errors]);
+                    }
+                }
+            }
+        }
+        return $this->twig->render('Admin/add.html.twig', ['categories' => $categories]);
+    }
+
     public function delete(int $id)
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -98,5 +174,103 @@ class AdminController extends AbstractController
 
             header('Location:/admin/index');
         }
+    }
+
+    private function validationRepresentation(array $dataClean): array
+    {
+        $errors = [];
+        if (empty($dataClean['price'])) {
+            $errors['price'] = 'Le prix est manquant';
+        } elseif ($dataClean['price'] < 0) {
+            $errors['price'] = 'Le prix est inférieur à 0';
+        } elseif (is_float($dataClean['price'])) {
+            $errors['price'] = 'Le prix est n\'est pas un nombre à virgule';
+        }
+        if (empty($dataClean['place'])) {
+            $errors['place'] = 'Le lieu est manquant';
+        } elseif (strlen($dataClean['place']) > 100) {
+            $errors['place'] = 'Le nom de lieu est trop long (plus de 100 caractères)';
+        }
+        if (empty($dataClean['datetime'])) {
+            $errors['datetime'] = 'La date et l\'heure sont manquantes';
+        }
+        if (empty($dataClean['duration'])) {
+            $errors['duration'] = 'La durée est manquante';
+        } elseif (strlen($dataClean['duration']) > 100) {
+            $errors['duration'] = 'La durée est trop longue (plus de 100 caractères)';
+        }
+        return $errors ?? [];
+    }
+
+    public function addRepresentation(int $id)
+    {
+        $eventManager = new EventManager();
+        $events = $eventManager->selectAllEvents();
+        $eventTitle = $eventManager->selectOneById($id);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $represManager = new RepresentationManager();
+            $admin = [
+                'price' => $_POST['price'],
+                'event_id' => $_POST['choosenEvent'],
+                'place' => $_POST['location'],
+                'datetime' => $_POST['date'],
+                'duration' => $_POST['duration'],
+            ];
+            $errors = $this->validationRepresentation($admin);
+            if (empty($errors)) {
+                $date = new DateTime($admin['datetime']);
+                $admin['datetime'] = $date->format('Y-m-d H:i:s');
+                $represManager->addRepresentation($admin);
+                header('Location: /admin/index');
+            } else {
+                return $this->twig->render('Admin/addRepresentation.twig', [
+                    "events" => $events,
+                    'errors' => $errors,
+                    "eventTitle" => $eventTitle]);
+            }
+        }
+        return $this->twig->render('Admin/addRepresentation.twig', [
+            "events" => $events,
+            "eventTitle" => $eventTitle
+            ]);
+    }
+
+    public function editRepresentation(int $id)
+    {
+        $eventManager = new EventManager();
+        $events = $eventManager->selectAllEvents();
+        $eventTitle = $eventManager->selectOneById($id);
+        $represSelectManag = new RepresentationManager();
+        $representations = $represSelectManag->selectOneById($id);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $represManager = new RepresentationManager();
+            $admin = [
+                'price' => $_POST['price'],
+                'id' => $id,
+                'event_id' => $_POST['choosenEvent'],
+                'place' => $_POST['location'],
+                'datetime' => $_POST['date'],
+                'duration' => $_POST['duration'],
+            ];
+            $admin = array_map('trim', $_POST);
+            $admin['id'] = $id;
+            $errors = $this->validationRepresentation($admin);
+            if (empty($errors)) {
+                $date = new DateTime($admin['datetime']);
+                $admin['datetime'] = $date->format('Y-m-d H:i:s');
+                $represManager->editRepresentation($admin);
+                header('Location: /admin/index');
+            } else {
+                return $this->twig->render('Admin/editRepresentation.twig', [
+                    "events" => $events,
+                    "representations" => $representations,
+                    'errors' => $errors]);
+            }
+        }
+        return $this->twig->render('Admin/editRepresentation.twig', [
+            "events" => $events,
+            "eventTitle" => $eventTitle,
+            "representations" => $representations
+        ]);
     }
 }

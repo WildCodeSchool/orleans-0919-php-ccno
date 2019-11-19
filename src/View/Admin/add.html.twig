@@ -2,5 +2,11 @@
 
 {% block content %}
     <h1 class="my-4 ml-3">Créer un nouvel évenement</h1>
-    {% include 'Admin/_form.html.twig' %}
+    {% include 'Admin/formulaireEvent.twig' %}
+    {% include 'Admin/formCategory.html.twig' %}
+    <div class="row p-5">
+        <a href="/admin/index" class="pl-3">
+            <button type="button" class="btn btn-success">Retour</button>
+        </a>
+    </div>
 {% endblock %}

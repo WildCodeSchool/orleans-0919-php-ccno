@@ -7,10 +7,15 @@
                    value="{{ event.title }}">
             <span>{{ errors.title }}</span>
         </div>
+        <div class="form-group col-md-3">
+            <label for="inputState">Catégorie</label>
+            <select id="inputState" name="choosenCategory" class="form-control">
+                {% for category in categories %}
+                    <option value="{{ category.id }}">{{category.name}}</option>
+                {% endfor %}
+            </select>
+        </div>
     </div>
-    <figure>
-        <img src="/{{ event.image }}" alt="{{ event.title }}" class="img-thumbnail">
-    </figure>
     <div class="form-group">
         <label for="image">Image</label>
         <input type="file" class="form-control-file" name="image" id="image">
@@ -34,8 +39,5 @@
             </label>
         </div>
     </div>
-    <button class="btn btn-primary">Modifier</button>
+    <button type="submit" name="event" class="btn btn-primary">Ajouter un évenement</button>
 </form>
-
-
-
