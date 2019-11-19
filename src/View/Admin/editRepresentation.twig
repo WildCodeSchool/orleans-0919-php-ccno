@@ -4,7 +4,7 @@
         <h1>Modification de la représentation</h1>
         {% include 'Admin/formEditRepresentation.twig' %}
         <div class="row p-5">
-            <form class="pl-3" method="post" action="/admin/delete/{{ event.id }}">
+            <form method="post" action="/representation/delete/{{ representation.id }}">
                 <input type="submit" name="delete" value="Supprimer" class="btn btn-danger">
             </form>
             <a href="/representation/index/{{ eventTitle.id }}" class="pl-3">

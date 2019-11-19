@@ -176,10 +176,9 @@ class AdminController extends AbstractController
         }
     }
 
-    private function validationRepresentation(array $data): array
+    private function validationRepresentation(array $dataClean): array
     {
         $errors = [];
-        $dataClean = $this->cleanInput($data);
         if (empty($dataClean['price'])) {
             $errors['price'] = 'Le prix est manquant';
         } elseif ($dataClean['price'] < 0) {
@@ -253,6 +252,8 @@ class AdminController extends AbstractController
                 'datetime' => $_POST['date'],
                 'duration' => $_POST['duration'],
             ];
+            $admin = array_map('trim', $_POST);
+            $admin['id'] = $id;
             $errors = $this->validationRepresentation($admin);
             if (empty($errors)) {
                 $date = new DateTime($admin['datetime']);
