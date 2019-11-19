@@ -7,9 +7,17 @@ use App\Model\EventManager;
 
 class EventController extends AbstractController
 {
-    public function index($month, $year)
+    public function index($month = '', $year = '')
     {
         $eventManager = new EventManager();
+        $currentDateMY = $this->nextEvent($month, $year);
+
+        if (!$month && !$year) {
+            $month = $currentDateMY['month'];
+            $year = $currentDateMY['year'];
+        }
+
+
         $events = $eventManager->showEventPerMonth($month, $year);
         $globalevents = $eventManager->showEvent();
         setlocale(LC_TIME, "fr_FR");
@@ -21,19 +29,12 @@ class EventController extends AbstractController
         }
 
         $isSetDate = array_merge(array_unique($isSetDate));
-
         $dateKey = $this->currentDateKey($isSetDate, $month, $year);
 
-        if ($dateKey > 0 && $dateKey < count($isSetDate) - 1) {
-            $previousDate = $isSetDate[$dateKey - 1];
-            $nextDate = $isSetDate[$dateKey + 1];
-        } elseif ($dateKey > 0 && $dateKey == count($isSetDate) - 1) {
-            $previousDate = $isSetDate[$dateKey - 1];
-            $nextDate = $isSetDate[$dateKey];
-        } elseif ($dateKey == 0 && $dateKey < count($isSetDate) - 1) {
-            $previousDate = $isSetDate[$dateKey];
-            $nextDate = $isSetDate[$dateKey + 1];
-        }
+        $date = $this->findMonth($isSetDate, $dateKey);
+
+        $previousDate = $date[0];
+        $nextDate = $date[1];
 
         return $this->twig->render('Event/index.html.twig', [
             'events' => $events,
@@ -62,5 +63,43 @@ class EventController extends AbstractController
                 return $key;
             }
         }
+    }
+
+    private function nextEvent($month, $year)
+    {
+        $eventManager = new EventManager();
+        $currentDateMY = ['month' => date("n"), 'year' => date("Y")];
+        if (!$month && !$year) {
+            $globalEvents = $eventManager->showEvent();
+            $isSetDate = [];
+            foreach ($globalEvents as $event) {
+                $isSetDate[] = $event['month'] . "/" . $event['year'];
+            }
+
+            while (!in_array($currentDateMY['month'] . '/' . $currentDateMY['year'], $isSetDate)) {
+                if ($currentDateMY['month'] < 12) {
+                    $currentDateMY['month'] += 1;
+                } elseif ($currentDateMY['month'] === 12) {
+                    $currentDateMY['month'] = 1;
+                    $currentDateMY['year'] += 1;
+                }
+            }
+            return $currentDateMY;
+        }
+    }
+
+    private function findMonth($isSetDate, $dateKey)
+    {
+        if ($dateKey > 0 && $dateKey < count($isSetDate) - 1) {
+            $previousDate = $isSetDate[$dateKey - 1];
+            $nextDate = $isSetDate[$dateKey + 1];
+        } elseif ($dateKey > 0 && $dateKey == count($isSetDate) - 1) {
+            $previousDate = $isSetDate[$dateKey - 1];
+            $nextDate = $isSetDate[$dateKey];
+        } elseif ($dateKey == 0 && $dateKey < count($isSetDate) - 1) {
+            $previousDate = $isSetDate[$dateKey];
+            $nextDate = $isSetDate[$dateKey + 1];
+        }
+        return [$previousDate, $nextDate];
     }
 }

@@ -1,0 +1,19 @@
+.course-tab {
+    background-color: var(--primary-color);
+    color: var(--light);
+    box-shadow: 0 5px 10px -6px rgba(0,0,0,0.27) inset;
+    -webkit-box-shadow: 0 5px 10px -6px rgba(0,0,0,0.27) inset;
+    -moz-box-shadow: 0 5px 10px -6px rgba(0,0,0,0.27) inset;
+    border: none;
+}
+
+.course-tab:hover {
+    color: var(--light);
+}
+
+.formation-tab:hover {
+    color: var(--primary-color);
+    box-shadow: 0 5px 10px -3px rgba(0,0,0,0.29);
+    -webkit-box-shadow: 0 5px 10px -3px rgba(0,0,0,0.29);
+    -moz-box-shadow: 0 5px 10px -3px rgba(0,0,0,0.29);
+}
