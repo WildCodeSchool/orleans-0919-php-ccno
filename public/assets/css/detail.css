@@ -9,14 +9,13 @@
 }
 
 .detail {
-    border: solid 1px var(--dark);
+    border: solid 2px var(--primary-color);
     border-radius: 4px;
     font-size: 1.2em;
 }
 
-.type {
-    text-transform: uppercase;
-    font-weight: bold;
-    width: -moz-fit-content;
-    background-color: var(--primary-color-transparent);
-}
+/*.type {*/
+    /*text-transform: uppercase;*/
+    /*font-weight: bold;*/
+    /*width: -moz-fit-content;*/
+/*}*/
