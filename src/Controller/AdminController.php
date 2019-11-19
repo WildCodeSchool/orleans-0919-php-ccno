@@ -194,9 +194,9 @@ class AdminController extends AbstractController
         if (empty($dataClean['datetime'])) {
             $errors['datetime'] = 'La date et l\'heure sont manquantes';
         }
-        if (empty($dataClean['duration']) > 100) {
+        if (empty($dataClean['duration'])) {
             $errors['duration'] = 'La durée est manquante';
-        } elseif (strlen($dataClean['duration'])) {
+        } elseif (strlen($dataClean['duration'])  > 100) {
             $errors['duration'] = 'La durée est trop longue (plus de 100 caractères)';
         }
         return $errors ?? [];
