@@ -32,6 +32,10 @@ hr {
     box-shadow: 0 4px 14px -5px rgba(0,0,0,0.46);
 }
 
+.presentation_test_ccno {
+    color: var(--dark);
+}
+
 .presentation_title {
     background-color: var(--primary-color-transparent);
     color: var(--light);
