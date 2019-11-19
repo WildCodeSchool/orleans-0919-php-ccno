@@ -8,6 +8,7 @@
 
 namespace App\Controller;
 
+use App\Model\EventManager;
 use App\Model\RepresentationManager;
 
 class RepresentationController extends AbstractController
@@ -21,11 +22,16 @@ class RepresentationController extends AbstractController
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
-    public function index($id)
+    public function index($eventId)
     {
         $represManager = new RepresentationManager();
-        $representations = $represManager->showOne($id);
+        $representations = $represManager->showOne($eventId);
+        $eventManager = new EventManager();
+        $event = $eventManager->selectOneById($eventId);
 
-        return $this->twig->render('AdminRepresentation/index.html.twig', ['representations' => $representations]);
+        return $this->twig->render('AdminRepresentation/index.html.twig', [
+            'representations' => $representations,
+            'event' => $event,
+        ]);
     }
 }

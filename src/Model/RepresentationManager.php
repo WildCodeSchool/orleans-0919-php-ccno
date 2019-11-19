@@ -15,7 +15,7 @@ class RepresentationManager extends AbstractManager
     public function showOne($id)
     {
         $statement = $this->pdo->prepare('SELECT * FROM representation r 
-        join event e on e.id = r.event_id WHERE r.id=:id');
+         WHERE event_id=:id');
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
 
