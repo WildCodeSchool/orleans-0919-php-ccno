@@ -34,4 +34,14 @@ class RepresentationController extends AbstractController
             'event' => $event,
         ]);
     }
+
+    public function delete(int $id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $represManager = new RepresentationManager();
+            $represManager->delete($id);
+
+            header('Location:/admin/index');
+        }
+    }
 }

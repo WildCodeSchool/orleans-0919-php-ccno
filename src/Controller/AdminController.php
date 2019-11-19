@@ -44,6 +44,7 @@ class AdminController extends AbstractController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $data = array_map('trim', $_POST);
+            $data['image'] = $event['image'];
 
             if (empty($_FILES['image'])) {
                 $data['image'] = $event['image'];
@@ -175,10 +176,9 @@ class AdminController extends AbstractController
         }
     }
 
-    private function validationRepresentation(array $data): array
+    private function validationRepresentation(array $dataClean): array
     {
         $errors = [];
-        $dataClean = $this->cleanInput($data);
         if (empty($dataClean['price'])) {
             $errors['price'] = 'Le prix est manquant';
         } elseif ($dataClean['price'] < 0) {
@@ -196,16 +196,17 @@ class AdminController extends AbstractController
         }
         if (empty($dataClean['duration'])) {
             $errors['duration'] = 'La durée est manquante';
-        } elseif (strlen($dataClean['duration'])  > 100) {
+        } elseif (strlen($dataClean['duration']) > 100) {
             $errors['duration'] = 'La durée est trop longue (plus de 100 caractères)';
         }
         return $errors ?? [];
     }
 
-    public function addRepresentation()
+    public function addRepresentation(int $id)
     {
         $eventManager = new EventManager();
         $events = $eventManager->selectAllEvents();
+        $eventTitle = $eventManager->selectOneById($id);
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $represManager = new RepresentationManager();
             $admin = [
@@ -224,9 +225,52 @@ class AdminController extends AbstractController
             } else {
                 return $this->twig->render('Admin/addRepresentation.twig', [
                     "events" => $events,
+                    'errors' => $errors,
+                    "eventTitle" => $eventTitle]);
+            }
+        }
+        return $this->twig->render('Admin/addRepresentation.twig', [
+            "events" => $events,
+            "eventTitle" => $eventTitle
+            ]);
+    }
+
+    public function editRepresentation(int $id)
+    {
+        $eventManager = new EventManager();
+        $events = $eventManager->selectAllEvents();
+        $eventTitle = $eventManager->selectOneById($id);
+        $represSelectManag = new RepresentationManager();
+        $representations = $represSelectManag->selectOneById($id);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $represManager = new RepresentationManager();
+            $admin = [
+                'price' => $_POST['price'],
+                'id' => $id,
+                'event_id' => $_POST['choosenEvent'],
+                'place' => $_POST['location'],
+                'datetime' => $_POST['date'],
+                'duration' => $_POST['duration'],
+            ];
+            $admin = array_map('trim', $_POST);
+            $admin['id'] = $id;
+            $errors = $this->validationRepresentation($admin);
+            if (empty($errors)) {
+                $date = new DateTime($admin['datetime']);
+                $admin['datetime'] = $date->format('Y-m-d H:i:s');
+                $represManager->editRepresentation($admin);
+                header('Location: /admin/index');
+            } else {
+                return $this->twig->render('Admin/editRepresentation.twig', [
+                    "events" => $events,
+                    "representations" => $representations,
                     'errors' => $errors]);
             }
         }
-        return $this->twig->render('Admin/addRepresentation.twig', ["events" => $events]);
+        return $this->twig->render('Admin/editRepresentation.twig', [
+            "events" => $events,
+            "eventTitle" => $eventTitle,
+            "representations" => $representations
+        ]);
     }
 }
