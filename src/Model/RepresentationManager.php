@@ -38,4 +38,20 @@ class RepresentationManager extends AbstractManager
             return (int)$this->pdo->lastInsertId();
         }
     }
+
+    public function editRepresentation(array $admin): int
+    {
+        $statement = $this->pdo->prepare("UPDATE " .  $this->table . " 
+        SET price=:price, place=:place, datetime=:datetime, duration=:duration, event_id=:event_id WHERE id=:id ;");
+        $statement->bindValue('price', $admin['price'], \PDO::PARAM_STR);
+        $statement->bindValue('id', $admin['id'], \PDO::PARAM_STR);
+        $statement->bindValue('place', $admin['place'], \PDO::PARAM_STR);
+        $statement->bindValue('datetime', $admin['datetime'], \PDO::PARAM_STR);
+        $statement->bindValue('duration', $admin['duration'], \PDO::PARAM_STR);
+        $statement->bindValue('event_id', $admin['event_id'], \PDO::PARAM_INT);
+
+        if ($statement->execute()) {
+            return (int)$this->pdo->lastInsertId();
+        }
+    }
 }
