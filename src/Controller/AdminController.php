@@ -229,4 +229,40 @@ class AdminController extends AbstractController
         }
         return $this->twig->render('Admin/addRepresentation.twig', ["events" => $events]);
     }
+
+    public function editRepresentation(int $id)
+    {
+        $eventManager = new EventManager();
+        $events = $eventManager->selectAllEvents();
+        $eventTitle = $eventManager->selectOneById($id);
+        $represSelectManag = new RepresentationManager();
+        $representations = $represSelectManag->selectOneById($id);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $represManager = new RepresentationManager();
+            $admin = [
+                'price' => $_POST['price'],
+                'event_id' => $_POST['choosenEvent'],
+                'place' => $_POST['location'],
+                'datetime' => $_POST['date'],
+                'duration' => $_POST['duration'],
+            ];
+            $errors = $this->validationRepresentation($admin);
+            if (empty($errors)) {
+                $date = new DateTime($admin['datetime']);
+                $admin['datetime'] = $date->format('Y-m-d H:i:s');
+                $represManager->addRepresentation($admin);
+                header('Location: /admin/index');
+            } else {
+                return $this->twig->render('Admin/editRepresentation.twig', [
+                    "events" => $events,
+                    "representations" => $representations,
+                    'errors' => $errors]);
+            }
+        }
+        return $this->twig->render('Admin/editRepresentation.twig', [
+            "events" => $events,
+            "eventTitle" => $eventTitle,
+            "representations" => $representations
+        ]);
+    }
 }
