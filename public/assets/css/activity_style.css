@@ -45,9 +45,7 @@
 .reservation:hover {
     background-color: var(--primary-color);
     transition-duration: 0.15s;
-    box-shadow: 0 5px 10px -3px rgba(0,0,0,0.29);
-    -webkit-box-shadow: 0 5px 10px -3px rgba(0,0,0,0.29);
-    -moz-box-shadow: 0 5px 10px -3px rgba(0,0,0,0.29);
+    box-shadow: 0 5px 10px -3px var(--shadow-color);
 }
 
 .pic {
@@ -58,6 +56,22 @@
 
 .activity-infos {
     height: 180px;
+}
+
+.active {
+    background-color: var(--primary-color);
+    color: var(--light);
+    box-shadow: 0 5px 10px -6px var(--shadow-color) inset;
+    border: none;
+}
+
+.active:hover {
+    color: var(--light);
+}
+
+.none-active:hover {
+    color: var(--primary-color);
+    box-shadow: 0 5px 10px -3px var(--shadow-color);
 }
 
 @media screen and (max-width: 1100px) {
