@@ -44,6 +44,7 @@ class AdminController extends AbstractController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $data = array_map('trim', $_POST);
+            $data['image'] = $event['image'];
 
             if (empty($_FILES['image'])) {
                 $data['image'] = $event['image'];
@@ -201,10 +202,11 @@ class AdminController extends AbstractController
         return $errors ?? [];
     }
 
-    public function addRepresentation()
+    public function addRepresentation(int $id)
     {
         $eventManager = new EventManager();
         $events = $eventManager->selectAllEvents();
+        $eventTitle = $eventManager->selectOneById($id);
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $represManager = new RepresentationManager();
             $admin = [
@@ -223,10 +225,14 @@ class AdminController extends AbstractController
             } else {
                 return $this->twig->render('Admin/addRepresentation.twig', [
                     "events" => $events,
-                    'errors' => $errors]);
+                    'errors' => $errors,
+                    "eventTitle" => $eventTitle]);
             }
         }
-        return $this->twig->render('Admin/addRepresentation.twig', ["events" => $events]);
+        return $this->twig->render('Admin/addRepresentation.twig', [
+            "events" => $events,
+            "eventTitle" => $eventTitle
+            ]);
     }
 
     public function editRepresentation(int $id)
