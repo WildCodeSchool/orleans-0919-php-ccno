@@ -42,6 +42,7 @@ class AdminController extends AbstractController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $data = array_map('trim', $_POST);
+            $data['image'] = $event['image'];
 
             if (empty($_FILES['image'])) {
                 $data['image'] = $event['image'];
