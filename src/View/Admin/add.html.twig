@@ -1,12 +1,14 @@
 {% extends 'layoutAdmin.html.twig' %}
 
 {% block content %}
-    <h1 class="my-4 pl-2">Créer un nouvel évenement</h1>
-    {% include 'Admin/formulaireEvent.twig' %}
-    {% include 'Admin/formCategory.html.twig' %}
-    <div class="row pl-5">
-        <a href="/admin/index" class="pl-3">
-            <button type="button" class="btn btn-success">Retour</button>
-        </a>
+    <div class="container-fluid">
+        <h1 class="my-4 pl-2">Créer un nouvel évenement</h1>
+        {% include 'Admin/formulaireEvent.twig' %}
+        {% include 'Admin/formCategory.html.twig' %}
+        <div class="p-5">
+            <a href="/admin/index" class="pl-3">
+                <button type="button" class="btn btn-success">Retour</button>
+            </a>
+        </div>
     </div>
 {% endblock %}
