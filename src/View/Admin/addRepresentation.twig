@@ -3,4 +3,9 @@
 {% block content %}
     <h1 class="my-4 ml-3">Créer une nouvelle représentation</h1>
     {% include 'Admin/formRepresentation.twig' %}
+    <div class="row p-5">
+        <a href="/representation/index/{{ eventTitle.id }}" class="pl-3">
+            <button type="button" class="btn btn-success">Retour</button>
+        </a>
+    </div>
 {% endblock %}
