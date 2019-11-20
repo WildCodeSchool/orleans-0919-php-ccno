@@ -18,7 +18,7 @@
                     </div>
                     <div class="mb-3">
                         {% for representation in representations %}
-                            <p class="description p-2">Cette évènement se joue au {{ representation.place }},
+                            <p class="description p-2">Cet évènement se joue au {{ representation.place }},
                                 le {{ representation.datetime|date("d/m/Y à H:i") }}.</p>
                         {% endfor %}
                     </div>
