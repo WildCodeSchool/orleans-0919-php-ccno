@@ -9,5 +9,13 @@
                     ('Attention vous allez aussi supprimer toutes les représentations de cette évènement ');">
         </form>
         <a href="/Admin/index">Retour</a>
+        <div class="row p-5">
+            <form class="pl-3" method="post" action="/admin/delete/{{ event.id }}">
+                <input type="submit" name="delete" value="Supprimer" class="btn btn-danger">
+            </form>
+            <a href="/Admin/index" class="pl-3">
+                <button type="button" class="btn btn-success">Retour</button>
+            </a>
+        </div>
     </div>
 {% endblock %}
