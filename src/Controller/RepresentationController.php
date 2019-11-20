@@ -28,7 +28,6 @@ class RepresentationController extends AbstractController
         $representations = $represManager->showOne($eventId);
         $eventManager = new EventManager();
         $event = $eventManager->selectOneById($eventId);
-
         return $this->twig->render('AdminRepresentation/index.html.twig', [
             'representations' => $representations,
             'event' => $event,
@@ -37,11 +36,13 @@ class RepresentationController extends AbstractController
 
     public function delete(int $id)
     {
+        $eventManager = new RepresentationManager();
+        $event = $eventManager->selectOneById($id);
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $represManager = new RepresentationManager();
             $represManager->delete($id);
-
-            header('Location:/admin/index');
+            $idEvent = intval($event['event_id']);
+            header('Location:/representation/index/' . $idEvent);
         }
     }
 }
