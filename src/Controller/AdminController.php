@@ -149,7 +149,7 @@ class AdminController extends AbstractController
                         'ccno' => $ccno,
                         'caroussel' => $caroussel,
                         'description' => $_POST['description'],
-                        'image' => $uploadFile,
+                        'image' => "/$uploadFile",
                     ];
                     $errors = $this->cleanFormular($admin);
                     if (empty($errors)) {
