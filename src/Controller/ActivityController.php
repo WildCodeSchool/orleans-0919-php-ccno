@@ -22,29 +22,27 @@ class ActivityController extends AbstractController
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
-    public function index(int $type)
+    public function index(string $type)
     {
-        //Le type 0 correspond aux cours et 1 aux formations.
-
         $activityManager = new ActivityManager();
 
-        if ($type === 0 || $type === 1) {
+        if ($type === 'course' || $type === 'training') {
             $activities = $activityManager->selectActivityByType($type);
         }
 
         switch ($type) {
-            case 0:
+            case 'course':
                 $isCourse = true;
                 break;
-            case 1:
-                $isFormation = true;
+            case 'training':
+                $isTraining = true;
                 break;
         }
 
         return $this->twig->render('Activity/index.html.twig', [
             'activities' => $activities ?? '',
             'isCourse' => $isCourse ?? '',
-            'isFormation' => $isFormation ?? '',
+            'isTraining' => $isTraining ?? '',
         ]);
     }
 }

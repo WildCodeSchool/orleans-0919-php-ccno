@@ -17,7 +17,7 @@ class ActivityManager extends AbstractManager
     public function selectActivityByType($type)
     {
         $statement = $this->pdo->prepare("SELECT * FROM $this->table WHERE type = :type;");
-        $statement->bindValue('type', $type, \PDO::PARAM_BOOL);
+        $statement->bindValue('type', $type, \PDO::PARAM_STR);
         $statement->execute();
         return $statement->fetchAll();
     }
