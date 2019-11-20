@@ -22,13 +22,21 @@
     </div>
     <div class="form-group">
         <div class="form-check">
-            <input class="form-check-input" name="ccno" type="checkbox" id="ccno">
+            <input class="form-check-input" name="ccno" type="checkbox" id="ccno"
+            {% if event.ccno != 0 %}
+                    checked
+                   {% endif %}
+            >
             <label class="form-check-label" for="ccno">
                 Est-ce un évenement produit par le CCNO ?
             </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" name="caroussel" type="checkbox" id="caroussel">
+            <input class="form-check-input" name="caroussel" type="checkbox" id="caroussel"
+                    {% if event.caroussel != 0 %}
+                        checked
+                    {% endif %}
+            >
             <label class="form-check-label" for="caroussel">
                 Voulez-vous le mettre dans le carrousel ?
             </label>

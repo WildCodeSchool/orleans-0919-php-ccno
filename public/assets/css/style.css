@@ -8,7 +8,9 @@
     --dark: #1e1918;
     --light: #fffbfd;
     --alert-color: #ff0000;
+    --shadow-color: rgba(0,0,0,0.29);
 }
+
 
 .logo {
     width: 10rem ;
