@@ -17,8 +17,10 @@
                         <p class="description pt-3 pb-3">{{ detail.description }}</p>
                     </div>
                     <div class="mb-3">
-                        <p class="description p-2">Cette évènement se joue au {{ detail.place }},
-                            le {{ detail.datetime|date("d/m/Y à H:i") }}.</p>
+                        {% for representation in representations %}
+                            <p class="description p-2">Cette évènement se joue au {{ representation.place }},
+                                le {{ representation.datetime|date("d/m/Y à H:i") }}.</p>
+                        {% endfor %}
                     </div>
                     <a class="btn btn-primary" href="https://ccn-orleans-reservations.mapado.com/" target="_blank">Réservation </a>
 
