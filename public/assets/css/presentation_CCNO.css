@@ -34,6 +34,7 @@ hr {
 
 .presentation_test_ccno {
     color: var(--dark);
+    font-size: 1.5rem ;
 }
 
 .presentation_title {
