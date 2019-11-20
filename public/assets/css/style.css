@@ -11,6 +11,14 @@
     --shadow-color: rgba(0,0,0,0.29);
 }
 
+.navbar, main {
+    max-width: 1400px;
+    margin: auto;
+}
+
+main {
+    min-height: 71vh;
+}
 
 .logo {
     width: 10rem ;
@@ -24,11 +32,8 @@
     color: var(--dark);
 }
 
-.dropdown-item {
-    font-size: 1rem;
-}
 
-.dropdown-item:hover, .navbar-light .navbar-nav .nav-link:hover{
+.navbar-light .navbar-nav .nav-link:hover{
     color: var(--primary-color);
 }
 
