@@ -74,6 +74,7 @@ hr {
     font-size: 1.2em;
     overflow: auto;
     color: var(--dark);
+    text-align: justify;
 }
 
 @media screen and (max-width: 500px) {
@@ -85,4 +86,5 @@ hr {
     hr{
         background-color: var(--dark);
     }
+
 }
