@@ -14,17 +14,14 @@ label {
 
 .send {
     font-size: 2em;
-
-    color:var(--primary-color);
     text-align: center;
 }
 
 .send:hover{
-    color: var(--light-primary-color);
+    background-color: var(--primary-color);
 }
 
 .btn{
-    background-color: var(--light);
     letter-spacing: .1em;
 }
 
