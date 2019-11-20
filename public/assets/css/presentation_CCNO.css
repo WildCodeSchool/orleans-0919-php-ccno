@@ -77,6 +77,10 @@ hr {
     text-align: justify;
 }
 
+.accueil_studio_h2{
+    width: 76%;
+}
+
 @media screen and (max-width: 500px) {
     .accueil_studio_paragraphe , .presentation_CCNO_paragraphe{
         overflow: hidden;
@@ -85,6 +89,10 @@ hr {
     }
     hr{
         background-color: var(--dark);
+    }
+
+    .equipe_presentation_ccno{
+        margin-top: 48px ;
     }
 
 }
