@@ -21,7 +21,8 @@
                     <tr>
                         <th scope="row">{{ event.id }}</th>
                         <td><a href="/admin/edit/{{ event.id }}">{{ event.title }}</a></td>
-                        <td><a class="btn btn-sm btn-info m-1" href="/representation/index/{{ event.id }}">Afficher</a></td>
+                        <td><a class="btn btn-sm btn-info m-1" href="/representation/index/{{ event.id }}">Afficher</a>
+                        </td>
                     </tr>
                 {% endfor %}
                 </tbody>
