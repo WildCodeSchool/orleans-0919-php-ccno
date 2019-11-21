@@ -15,11 +15,6 @@
     font-size: 1.2em;
 }
 
-.card-representation {
-    width: 20rem;
-    font-size: 1.3em;
-}
-
 .logo {
     width: 10rem ;
 }
@@ -45,4 +40,5 @@ a:hover {
 }
 th, td {
     color: var(--dark);
+    font-size: 1.4em;
 }
