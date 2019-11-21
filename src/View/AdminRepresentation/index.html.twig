@@ -1,13 +1,13 @@
 {% extends 'layoutAdmin.html.twig' %}
 {% block content %}
-    <div class="container-fluid m-5">
+    <div class="container-fluid pr-5">
         <h1>Représentations pour <a href="/admin/edit/{{ event.id }}" class="text-info">{{ event.title }}</a></h1>
         {% for representation in representations %}
                 <div class="card card-representation m-5">
                     <div class="card-body">
                         <h2 class="card-title">{{ representation.datetime }}</h2>
                         <p class="card-text card-representation">{{ representation.place }}</p>
-                        <a href="/admin/editRepresentation/{{ event.id }}" class="card-link text-info card-representation">Modifier</a>
+                        <a href="/admin/editRepresentation/{{ representation.id }}" class="card-link text-info card-representation">Modifier</a>
                         <form method="post" action="/representation/delete/{{ representation.id }}">
                             <input type="submit" name="delete" value="Supprimer" class="btn btn-danger">
                         </form>

@@ -5,6 +5,7 @@
     --footer-text-secondary-color : #c3c7cb;
     --dark: #1e1918;
     --light: #fffbfd;
+    margin: 0;
 }
 
 /*Admin/Show*/
@@ -14,11 +15,31 @@
     font-size: 1.2em;
 }
 
-.text-representation {
-    font-size: 1.2em;
-}
-
 .card-representation {
     width: 20rem;
     font-size: 1.3em;
+}
+
+.logo {
+    width: 10rem ;
+}
+
+.nav-link {
+    font-size: 2em;
+}
+
+.admin-color {
+    color: var(--primary-color);
+}
+
+a:hover {
+    color: var(--primary-color);
+}
+
+.btn-info {
+    background-color: var(--dark);
+}
+
+.btn-info:hover {
+    background-color: var(--primary-color);
 }

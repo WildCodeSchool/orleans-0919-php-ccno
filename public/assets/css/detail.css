@@ -1,8 +1,9 @@
 .imageDetail {
     width: 35rem;
-    height: 35rem;
+    height: 100%;
     border-radius: 4px;
     object-fit: cover;
+
 }
 
 .description {

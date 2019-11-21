@@ -31,20 +31,20 @@
 </section>
     <hr/>
     {% set teams = [
-        {'name': 'José Alves', 'postOccuped': 'Directeur technique', 'mail': 'josealves@ccn-orleans.com'},
-        {'name': 'Pauline Heng', 'postOccuped': 'Comptable', 'mail': 'paulineheng@ccn-orleans.com'},
-        {'name': 'Raïssa Kim', 'postOccuped': 'Secrétaire générale', 'mail': 'raissakim@ccn-orleans.com'},
+        {'name': 'José Alves', 'postOccuped': 'Directeur technique', 'mail': 'josealves@ccn-orleans.com','image': '/assets/images/person-grey-man.jpg'},
+        {'name': 'Pauline Heng', 'postOccuped': 'Comptable', 'mail': 'paulineheng@ccn-orleans.com', 'image': '/assets/images/person-grey.jpg'},
+        {'name': 'Raïssa Kim', 'postOccuped': 'Secrétaire générale', 'mail': 'raissakim@ccn-orleans.com', 'image': '/assets/images/person-grey-girl.jpg'},
     ] %}
 <section class="equipe">
-    <h2 class="row justify-content-center justify-content-md-start mx-5">L'ÉQUIPE</h2>
+    <h2 class="row equipe_presentation_ccno justify-content-center justify-content-md-start mx-5">L'ÉQUIPE</h2>
     <div class="row no-gutters justify-content-around">
         {% for team in teams %}
         <div class="card_presentation_ccno col-11 col-sm-5 col-lg-5 col-xl-3 mt-5" style="width:500px">
-            <img class="card-img-top" src="https://via.placeholder.com/250x330" alt="Card image">
+            <img class="card-img-top" src="{{ team.image }}" alt="Card image">
             <div class="card-img-overlay p-0">
                 <h4 class="card-title presentation_title">{{ team.postOccuped }}</h4>
             </div>
-            <p class="card-text presentation_test my-3 text-center">{{ team.name }}</p>
+            <p class="card-text presentation_test_ccno my-3 text-center">{{ team.name }}</p>
             <div class="fa-envelope_center">
                 <a href="mailto:{{ team.mail }}" class= "btn btn-primary stretched-link far fa-envelope p-0 mb-3"></a>
             </div>
@@ -54,17 +54,28 @@
 </section>
     <hr/>
 <section class="accueil_studio">
-    <h2 class="row justify-content-center justify-content-md-start mx-5 my-5">ACCUEIL STUDIO</h2>
+    <h2 class="row accueil_studio_h2 justify-content-center justify-content-md-start mx-5 my-5">ACCUEIL STUDIO</h2>
     <div class="accueil_studio_description d-flex justify-content-around m-lg-5 m-4">
         <div class="accueil_studio_paragraphe mr-lg-5 p-4 d-flex flex-column">
-    <p>Pour chercher, fabriquer, créer, les artistes ont besoin de travailler dans les studios. Le CCNO leur ouvre ses portes autant que possible.
-        Grâce à leur présence dans le Centre chorégraphique et dans la ville, les imaginaires s’ouvrent et voyagent.
-        Comment partager avec vous leur démarche artistique ? Chaque équipe accueillie est associée à cet enjeu essentiel de mise en commun et de rencontre.</p>
-    <p>L’accueil-studio :<br>
+    <p>Le CCNO propose aux compagnies un espace de travail de même qu’un soutien logistique et
+        technique pour leur permettre d’élaborer leurs créations dans les meilleures conditions.
+        Les studios peuvent également être mis à disposition pour ces mêmes projets.</p>
+    <p>
+    <p>
+       Pour chercher, fabriquer, créer, les artistes ont besoin de travailler dans les studios.
+       Le CCNO leur ouvre ses portes autant que possible.
+       Grâce à leur présence dans le Centre chorégraphique et dans la ville, les imaginaires s’ouvrent et voyagent.
+       Chaque équipe accueillie est associée à cet enjeu essentiel de mise en commun et de rencontre.
+    </p>
+        Dans le cadre du dispositif “accueil studio”, les compagnies sont accueillies en résidence et bénéficient d’un soutien financier pour consolider/ matérialiser leur projet artistique.
+        Ces résidences sont ponctuées d’ouvertures publiques pour le public et l’opportunité pour les artistes de partager le processus en cours.</p>
+    <p>
+        Le protocole de demande d’accueil-studio au CCNO vaut également pour toutes les demandes de prêts de studio.
+        Un comité de lecture est mis en place et réunit cinq membres de l’équipe permanente du CCNO deux fois dans l’année.</p>
+    <p>
         Grâce au dispositif de l’accueil-studio, le CCNO peut coproduire et accueillir une dizaine de projets chorégraphiques chaque année.
-        Ce dispositif est devenu aujourd’hui un maillon incontournable de la production en danse et un levier considérable pour pouvoir répéter et créer.</p>
-    <p>L’ouverture publique :<br>
-        L’ouverture publique est prévue pour chaque fin de résidence. Espace de rencontre et de dialogue entre un travail en cours de création et un public, ce moment unique et privilégié est en entrée libre.</p>
+        Ce dispositif est devenu aujourd’hui un maillon incontournable de la production en danse et un levier considérable pour pouvoir répéter et créer.
+    </p>
         </div>
         <div class="d-sm-none d-lg-block d-none">
         <img src="/assets/images/atelier.jpg" class="img_atelier" alt="">

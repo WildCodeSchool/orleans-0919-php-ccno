@@ -51,8 +51,12 @@ class EventController extends AbstractController
     {
         $eventManager = new EventManager();
         $detail = $eventManager->selectEventById($id);
+        $represManager = new EventManager();
+        $representations = $represManager->showRepresentations($id);
         return $this->twig->render('Event/detail.html.twig', [
-            'detail' => $detail
+            'detail' => $detail,
+            'representations' => $representations,
+
         ]);
     }
 

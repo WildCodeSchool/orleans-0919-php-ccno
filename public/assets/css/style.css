@@ -11,7 +11,7 @@
     --shadow-color: rgba(0,0,0,0.29);
 }
 
-.navbar, main {
+.navbar, main, .footer_container {
     max-width: 1400px;
     margin: auto;
 }
