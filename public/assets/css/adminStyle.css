@@ -43,3 +43,6 @@ a:hover {
 .btn-info:hover {
     background-color: var(--primary-color);
 }
+th, td {
+    color: var(--dark);
+}

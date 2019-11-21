@@ -1,16 +1,13 @@
 {% extends 'layoutAdmin.html.twig' %}
 {% block content %}
-
     <div class="container-fluid p-5">
         <div class="row">
             <div class="d-flex pb-5 mx-auto">
-                <h1>Représentations pour <a href="/admin/edit/{{ event.id }}" class="text-info">{{ event.title }}</a>
+                <h1>Représentations pour <a href="/admin/edit/{{ event.id }}">{{ event.title }}</a>
                 </h1>
-                <a href="/admin/addRepresentation/{{ event.id }}">
+                <a href="/admin/addRepresentation/{{ event.id }}" class="pl-3">
                     <button type="button" class="btn btn-info">Ajouter une représentation</button>
                 </a>
-
-
             </div>
             <table class="table pt-5">
                 <thead class="thead-dark">
@@ -42,10 +39,8 @@
                 </tbody>
             </table>
         </div>
+            <a href="/admin/index">
+                <button type="button" class="btn btn-success">Retour</button>
+            </a>
     </div>
-    <a href="/admin/index">
-        <button type="button" class="btn btn-info">Retour</button>
-    </a>
-
-
 {% endblock %}
