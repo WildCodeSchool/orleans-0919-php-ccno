@@ -221,7 +221,7 @@ class AdminController extends AbstractController
                 $date = new DateTime($admin['datetime']);
                 $admin['datetime'] = $date->format('Y-m-d H:i:s');
                 $represManager->addRepresentation($admin);
-                header('Location: /admin/index');
+                header('Location:/representation/index/' . $id);
             } else {
                 return $this->twig->render('Admin/addRepresentation.twig', [
                     "events" => $events,
@@ -258,7 +258,7 @@ class AdminController extends AbstractController
                 $date = new DateTime($admin['datetime']);
                 $admin['datetime'] = $date->format('Y-m-d H:i:s');
                 $represManager->editRepresentation($admin);
-                header('Location: /admin/index');
+                header('Location:/representation/index/' . $eventId);
             } else {
                 return $this->twig->render('Admin/editRepresentation.twig', [
                     "events" => $events,
