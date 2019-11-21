@@ -8,6 +8,10 @@
     font-size: 1.2em;
 }
 
+.presentation p {
+    color:black;
+}
+
 .presentation_img {
     width: 25rem;
     height: 25rem;
@@ -60,7 +64,7 @@
 }
 
 .event_button .btn:hover {
-    color: var(--primary-color);
+    background-color: var(--primary-color);
 }
 
 .events_container .row {
