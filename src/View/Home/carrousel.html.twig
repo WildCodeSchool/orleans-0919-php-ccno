@@ -9,6 +9,9 @@
             {% for caroussel in caroussels %}
                 <div class="carousel-item {% if loop.index == 1 %} active {% endif %}">
                     <img src="{{ caroussel.image }}" class="d-block w-100 img-fluid rounded" alt="">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h2 class="type mx-auto p-2">{{ caroussel.title }}</h2>
+                    </div>
                 </div>
             {% endfor %}
         </div>

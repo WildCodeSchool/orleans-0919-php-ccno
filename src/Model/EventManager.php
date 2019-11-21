@@ -85,4 +85,13 @@ class EventManager extends AbstractManager
     {
         return $this->pdo->query('SELECT * FROM ' . $this->table . ' ;')->fetchAll();
     }
+    public function showRepresentations($id)
+    {
+        $statement = $this->pdo->prepare('SELECT * FROM representation r 
+         WHERE event_id=:id');
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetchAll();
+    }
 }

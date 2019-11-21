@@ -1,33 +1,32 @@
 {% extends 'layoutAdmin.html.twig' %}
 {% block content %}
-    <div class="container-fluid m-5 d-flex">
-        <div>
-            <h1>Évènements</h1>
-            <div class="d-flex">
-            <ul>
-                {% for event in events %}
-                    <li class="text_admin"><a href="/admin/edit/{{ event.id }}">{{ event.title }}</a></li>
-                {% else %}
-                    <li>Nothing to display</li>
-                {% endfor %}
-            </ul>
-            <ul class="list-unstyled pl-3">
-                {% for event in events %}
-                    <li><a class="text-info text-representation" href="/representation/index/{{ event.id }}">représentations</a>
-                    </li>
-                {% else %}
-                    <li>Nothing to display</li>
-                {% endfor %}
-            </ul>
-            </div>
-            <div class="row">
+    <div class="container-fluid p-5">
+        <div class="row">
+            <div class="d-flex pb-5 mx-auto">
+                <h1 class="">Liste des évènements</h1>
                 <a href="/admin/add" class="pl-3">
                     <button type="button" class="btn btn-info">Ajouter un évènement</button>
                 </a>
-                <a href="/" class="pl-3">
-                    <button type="button" class="btn btn-info">Retour au site</button>
-                </a>
             </div>
+            <table class="table pt-5">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Evènements</th>
+                    <th scope="col">Représentations</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for event in events %}
+                    <tr>
+                        <th scope="row">{{ event.id }}</th>
+                        <td><a href="/admin/edit/{{ event.id }}">{{ event.title }}</a></td>
+                        <td><a class="btn btn-sm btn-info m-1" href="/representation/index/{{ event.id }}">Afficher</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
         </div>
     </div>
 {% endblock %}
