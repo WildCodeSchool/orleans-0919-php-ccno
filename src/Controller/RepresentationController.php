@@ -41,7 +41,7 @@ class RepresentationController extends AbstractController
             $represManager = new RepresentationManager();
             $represManager->delete($id);
 
-            header('Location:/admin/index');
+            header("Location:/representation/index/$id");
         }
     }
 }
