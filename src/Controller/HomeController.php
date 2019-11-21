@@ -23,7 +23,7 @@ class HomeController extends AbstractController
      */
     public function index()
     {
-        $carousselManager= new EventCarousselManager('event');
+        $carousselManager= new EventCarousselManager();
         $caroussels = $carousselManager->selectPictureCaroussel();
         $eventManager = new EventManager();
         $events = $eventManager->showEventHomePage();
