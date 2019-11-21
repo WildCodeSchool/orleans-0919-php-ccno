@@ -1,13 +1,13 @@
 <div class="content-container mx-auto d-flex mb-5 flex-wrap">
     {% for activity in activities %}
     <div class="card-activity px-4 my-4 d-flex flex-column justify-content-between">
-        <h3 class="title">{{ activity.public }}</h3>
+        <h3 class="title mt-4">{{ activity.public }}</h3>
         <div class="d-flex img-description">
         <img src="{{ activity.image }}" alt="{{ activity.title }}" class="mr-3 pic">
-        <div class="activity-infos d-flex flex-column justify-content-around">
-            <p>{{ activity.title }}</p>
-            <p>{{ activity.recurrence }}</p>
-            <p>{{ activity.price }}</p>
+        <div class="activity-infos d-flex flex-column justify-content-around ml-lg-5 mt-lg-3">
+            <p>{{ activity.title }}.</p>
+            <p>{{ activity.recurrence }}.</p>
+            <p>{{ activity.price }}.</p>
         </div>
         </div>
         <a target="_blank" href="{{ activity.link }}"><button class="reservation w-100">RESERVER</button></a>
