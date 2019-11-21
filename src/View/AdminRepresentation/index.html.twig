@@ -1,20 +1,46 @@
 {% extends 'layoutAdmin.html.twig' %}
 {% block content %}
-    <div class="container-fluid pr-5">
-        <h1>Représentations pour <a href="/admin/edit/{{ event.id }}" class="text-info">{{ event.title }}</a></h1>
-        {% for representation in representations %}
-                <div class="card card-representation m-5">
-                    <div class="card-body">
-                        <h2 class="card-title">{{ representation.datetime }}</h2>
-                        <p class="card-text card-representation">{{ representation.place }}</p>
-                        <a href="/admin/editRepresentation/{{ representation.id }}" class="card-link text-info card-representation">Modifier</a>
-                        <form method="post" action="/representation/delete/{{ representation.id }}">
-                            <input type="submit" name="delete" value="Supprimer" class="btn btn-danger">
-                        </form>
-                    </div>
-                </div>
-        {% endfor %}
-            <a href="/admin/addRepresentation/{{ event.id }}"><button type="button" class="btn btn-info">Ajouter</button></a>
-            <a href="/admin/index"><button type="button" class="btn btn-success">Retour</button></a>
+    <div class="container-fluid p-5">
+        <div class="row">
+            <div class="d-flex pb-5 mx-auto">
+                <h1>Représentations pour <a href="/admin/edit/{{ event.id }}">{{ event.title }}</a>
+                </h1>
+                <a href="/admin/addRepresentation/{{ event.id }}" class="pl-3">
+                    <button type="button" class="btn btn-info">Ajouter une représentation</button>
+                </a>
+            </div>
+            <table class="table pt-5">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Lieu</th>
+                    <th scope="col">Durée</th>
+                    <th scope="col">Prix</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for representation in representations %}
+                    <tr>
+                        <th scope="row">{{ representation.datetime }}</th>
+                        <td>{{ representation.place }}</td>
+                        <td>{{ representation.duration }}</td>
+                        <td>{{ representation.price }}</td>
+                        <td><a href="/admin/editRepresentation/{{ representation.id }}"
+                               class="btn btn-info">Modifier</a></td>
+                        <td>
+                            <form method="post" action="/representation/delete/{{ representation.id }}">
+                                <input type="submit" name="delete" value="Supprimer" class="btn btn-danger">
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+            <a href="/admin/index">
+                <button type="button" class="btn btn-success">Retour</button>
+            </a>
     </div>
 {% endblock %}
