@@ -149,7 +149,7 @@ class AdminController extends AbstractController
                         'ccno' => $ccno,
                         'caroussel' => $caroussel,
                         'description' => $_POST['description'],
-                        'image' => $uploadFile,
+                        'image' => "/$uploadFile",
                     ];
                     $errors = $this->cleanFormular($admin);
                     if (empty($errors)) {
@@ -221,7 +221,7 @@ class AdminController extends AbstractController
                 $date = new DateTime($admin['datetime']);
                 $admin['datetime'] = $date->format('Y-m-d H:i:s');
                 $represManager->addRepresentation($admin);
-                header('Location: /admin/index');
+                header('Location:/representation/index/' . $id);
             } else {
                 return $this->twig->render('Admin/addRepresentation.twig', [
                     "events" => $events,
@@ -239,27 +239,26 @@ class AdminController extends AbstractController
     {
         $eventManager = new EventManager();
         $events = $eventManager->selectAllEvents();
-        $eventTitle = $eventManager->selectOneById($id);
         $represSelectManag = new RepresentationManager();
         $representations = $represSelectManag->selectOneById($id);
+        $eventId = intval($representations['event_id']);
+        $eventTitle = $eventManager->selectEventById($eventId);
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $represManager = new RepresentationManager();
-            $admin = [
+            $adminNotClean = [
                 'price' => $_POST['price'],
                 'id' => $id,
-                'event_id' => $_POST['choosenEvent'],
                 'place' => $_POST['location'],
                 'datetime' => $_POST['date'],
                 'duration' => $_POST['duration'],
             ];
-            $admin = array_map('trim', $_POST);
-            $admin['id'] = $id;
+            $admin = array_map('trim', $adminNotClean);
             $errors = $this->validationRepresentation($admin);
             if (empty($errors)) {
                 $date = new DateTime($admin['datetime']);
                 $admin['datetime'] = $date->format('Y-m-d H:i:s');
                 $represManager->editRepresentation($admin);
-                header('Location: /admin/index');
+                header('Location:/representation/index/' . $eventId);
             } else {
                 return $this->twig->render('Admin/editRepresentation.twig', [
                     "events" => $events,
@@ -270,6 +269,7 @@ class AdminController extends AbstractController
         return $this->twig->render('Admin/editRepresentation.twig', [
             "events" => $events,
             "eventTitle" => $eventTitle,
+            "eventId" => $eventId,
             "representations" => $representations
         ]);
     }
